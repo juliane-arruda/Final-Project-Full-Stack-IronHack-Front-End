@@ -21,8 +21,7 @@ handleFormSubmit(event) {
             this.setState({
                 username: "",
                 password: "", 
-                email: "", 
-                date: "", 
+                email: "",  
                 role: ""
             });
             this.props.getUser(user);
