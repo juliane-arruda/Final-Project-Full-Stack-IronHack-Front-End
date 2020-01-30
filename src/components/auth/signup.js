@@ -20,7 +20,7 @@ handleFormSubmit(event) {
             this.setState({
                 username: "",
                 password: "", 
-                email: "",
+                email: "",  
                 role: ""
             });
             this.props.getUser(user);
