@@ -24,12 +24,15 @@ class AddPhoto extends Component {
 
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new thing in '/api/photo/create' POST route
+    // req.body to .create() method when creating a new thing in '/photo' POST route
+    console.log(e.target.file);
+    console.log(e.target.files);
     uploadData.append("imageUrl", e.target.files[0]);
 
+    console.log('vai subir imagem');
     service.handleUpload(uploadData)
       .then(response => {
-        // console.log('response is: ', response);
+        console.log('response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
         this.setState({ imageUrl: response.secure_url });
       })
@@ -55,7 +58,7 @@ class AddPhoto extends Component {
   render() {
     return (
       <div>
-        <h2>New Thing</h2>
+        <h2>New photo</h2>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>Name</label>
           <input
