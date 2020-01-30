@@ -51,7 +51,7 @@ class AuthService {
             })
             .then(response => response.data)
         }
-
+    }
 
 export default AuthService;
 
