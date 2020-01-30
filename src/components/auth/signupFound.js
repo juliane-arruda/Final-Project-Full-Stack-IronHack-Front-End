@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
+import AddPet from '../pets/addPet'
 
 class SignupFound extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "", email: "", role: "FOUND" };
+        this.state = { 
+        username: "", 
+        password: "", 
+        email: "", 
+        role: "FOUND",  
+        petName: "",
+        petDescription: "",
+        imageUrl: "",
+        petLocation: "",
+        petDate: "", };
         this.service = new AuthService();
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -13,15 +23,19 @@ class SignupFound extends Component {
 
 handleFormSubmit(event) {
     event.preventDefault();
-    const { username, password, email, role } = this.state
+    const { username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate } = this.state
     this.service
-        .signup(username, password, email, role)
+        .signup(username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate)
         .then(user => {
             this.setState({
-                username: "",
-                password: "", 
-                email: "",  
-                role: ""
+            username: "",
+            password: "", 
+            email: "",  
+            petName: "",
+            petDescription: "",
+            imageUrl: "",
+            petLocation: "",
+            petDate: "",
             });
             this.props.getUser(user);
             this.props.history.push("/pets")
@@ -38,6 +52,25 @@ handleFormSubmit(event) {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
+
+    handleFileUpload = e => {
+        // console.log("The file to be uploaded is: ", e.target.files[0]);
+    
+        const uploadData = new FormData();
+        // imageUrl => this name has to be the same as in the model since we pass
+        // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+        uploadData.append("imageUrl", e.target.files[0]);
+    
+        this.service.handleUpload(uploadData)
+          .then(response => {
+            console.log('response is: ', response);
+            // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+            this.setState({ imageUrl: response.secure_url });
+          })
+          .catch(err => {
+            console.log("Error while uploading the file: ", err);
+          });
+      }
 
     render() {
         console.log(this.props);
@@ -69,9 +102,23 @@ handleFormSubmit(event) {
                 onChange={this.handleChange}
               />
 
+          <label>Nome do pet:</label>
+            <input
+                type="text"
+                name="petName"
+                value={this.state.petName}
+                onChange={e => this.handleChange(e)} />
+          <label>Descrição do pet:</label>
+            <textarea
+                type="text"
+                name="petDescription"
+                value={this.state.petDescription}
+                onChange={e => this.handleChange(e)} />
+          <input
+                type="file"
+                onChange={(e) => this.handleFileUpload(e)} />
 
-
-              <input type="submit" value="Signup" />
+            <input type="submit" value="Signup" />
             </form>
             {this.state.message && <p>{this.state.message}</p>}
             <p>
