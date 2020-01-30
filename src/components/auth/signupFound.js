@@ -114,6 +114,18 @@ handleFormSubmit(event) {
                 name="petDescription"
                 value={this.state.petDescription}
                 onChange={e => this.handleChange(e)} />
+          <label>Data que o pet foi perdido:</label>
+            <input
+                type="date"
+                name="petDate"
+                value={this.state.petDate}
+                onChange={e => this.handleChange(e)} />
+          <label>Endereço onde o pet foi perdido:</label>
+            <input
+                type="text"
+                name="petLocation"
+                value={this.state.petLocation}
+                onChange={e => this.handleChange(e)} />
           <input
                 type="file"
                 onChange={(e) => this.handleFileUpload(e)} />
