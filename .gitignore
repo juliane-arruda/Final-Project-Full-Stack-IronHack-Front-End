@@ -17,6 +17,8 @@
 .nfs*
 # dotenv environment variables file
 .env
+.env.development
+.env.production
 .env.test
 
 ### Node ###
