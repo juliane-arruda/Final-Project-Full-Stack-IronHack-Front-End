@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Signup extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "", email: "", role: "LOST", message: "" };
+        this.state = { username: "", password: "", email: "", role: "LOST" };
         this.service = new AuthService();
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -14,7 +14,6 @@ class Signup extends Component {
 handleFormSubmit(event) {
     event.preventDefault();
     const { username, password, email, role } = this.state
-
     this.service
         .signup(username, password, email, role)
         .then(user => {

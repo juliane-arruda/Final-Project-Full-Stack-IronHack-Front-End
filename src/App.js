@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 import Signup from "./components/auth/signup";
-import AddThing from './components/AddPhoto';
 import AddPhoto from './components/AddPhoto';
+import Login from "./components/auth/login"
 
 
 class App extends Component {
@@ -20,12 +20,19 @@ class App extends Component {
         <h1>I cat your pet</h1>
 
         <Switch>
-          <Route
-            exact
-            path="/signup"
-            user={this.state.loggedInUser}
-            render={props => <Signup getUser={this.getTheUser} {...props} />}
-          />
+            <Route
+              exact
+              path="/signup"
+              user={this.state.loggedInUser}
+              render={props => <Signup getUser={this.getTheUser} {...props} />}
+            />
+            <Route
+              exact
+              path="/"
+              user={this.state.loggedInUser}
+              render={props => <Login getUser={this.getTheUser} {...props} />}
+            />
+
         </Switch>
 
         <div className="App">
