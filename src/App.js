@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
-import Signup from "./components/auth/signup";
+import SignupLost from "./components/auth/signupLost";
+import SignupFound from "./components/auth/signupFound";
 import AddPhoto from './components/AddPhoto';
 import Login from "./components/auth/login"
+import PetList from "./components/pets/petList"
 
 
 class App extends Component {
@@ -22,9 +24,9 @@ class App extends Component {
         <Switch>
             <Route
               exact
-              path="/signup"
+              path="/signup-lost"
               user={this.state.loggedInUser}
-              render={props => <Signup getUser={this.getTheUser} {...props} />}
+              render={props => <SignupLost getUser={this.getTheUser} {...props} />}
             />
             <Route
               exact
@@ -32,6 +34,18 @@ class App extends Component {
               user={this.state.loggedInUser}
               render={props => <Login getUser={this.getTheUser} {...props} />}
             />
+            <Route
+              exact
+              path="/signup-found"
+              user={this.state.loggedInUser}
+              render={props => <SignupFound getUser={this.getTheUser} {...props} />}
+            />
+            <Route
+            exact
+            path="/pets"
+            // user={this.state.loggedInUser}
+            component={PetList}
+          />/>
 
         </Switch>
 
