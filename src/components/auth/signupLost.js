@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
 
-class Signup extends Component {
+class SignupLost extends Component {
     constructor(props) {
         super(props);
         this.state = { username: "", password: "", email: "", role: "LOST" };
@@ -43,6 +43,7 @@ handleFormSubmit(event) {
         console.log(this.props);
         return (
           <div>
+            <h1>Perdi meu pet!</h1>
             <form onSubmit={this.handleFormSubmit}>
               <label>Username:</label>
               <input
@@ -83,4 +84,4 @@ handleFormSubmit(event) {
 
 }
 
-export default Signup;
+export default SignupLost;
