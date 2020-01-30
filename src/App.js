@@ -3,7 +3,7 @@ import './App.css';
 import { Switch, Route } from "react-router-dom";
 import SignupLost from "./components/auth/signupLost";
 import SignupFound from "./components/auth/signupFound";
-import AddPhoto from './components/AddPhoto';
+// import AddPhoto from './components/AddPhoto';
 import Login from "./components/auth/login"
 import PetList from "./components/pets/petList"
 
@@ -49,9 +49,9 @@ class App extends Component {
 
         </Switch>
 
-        <div className="App">
-          <AddPhoto />
-        </div>
+        {/* <div className="App"> */}
+          {/* <AddPhoto /> */}
+        {/* </div> */}
 
       </div>
     )
