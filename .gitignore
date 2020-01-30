@@ -18,6 +18,8 @@
 # dotenv environment variables file
 .env
 .env.test
+.env.development
+.env.production
 
 ### Node ###
 # Logs
