@@ -22,8 +22,10 @@ export default {
 
   saveNewThing(newThing) {
     // console.log('new thing is: ', newThing)
-    return service.post('/things/create', newThing)
+    return service.post('/photo/create', newThing)
       .then(res => res.data)
       .catch(errorHandler);
   }
 }
+
+// export default service;

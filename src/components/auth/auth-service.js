@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 class AuthService {
+
     constructor() {
         this.service = axios.create({
             baseURL: process.env.REACT_APP_API,
@@ -39,6 +40,7 @@ class AuthService {
         }
 
 
+
     AddPet(petName, petDescription, imageUrl, petLocation, petDate) {
         return this.service.post('/add-pet', {
             petName,
@@ -50,14 +52,6 @@ class AuthService {
             .then(response => response.data)
         }
 
-        // saveNewThing (newThing) {
-        //     // console.log('new thing is: ', newThing)
-        //     return this.service.post('/things/create', newThing)
-        //       .then(res => res.data)
-        //       .catch(errorHandler);
-        //   }
-        
-    }
-        
-    
-    export default AuthService;
+
+export default AuthService;
+

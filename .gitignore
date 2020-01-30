@@ -20,6 +20,8 @@
 .env.development
 .env.production
 .env.test
+.env.development
+.env.production
 
 ### Node ###
 # Logs
