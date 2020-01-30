@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 import Signup from "./components/auth/signup";
+import Login from "./components/auth/login"
 
 
 class App extends Component {
@@ -24,6 +25,13 @@ class App extends Component {
               user={this.state.loggedInUser}
               render={props => <Signup getUser={this.getTheUser} {...props} />}
             />
+            <Route
+              exact
+              path="/"
+              user={this.state.loggedInUser}
+              render={props => <Login getUser={this.getTheUser} {...props} />}
+            />
+
         </Switch>
 
       </div>
