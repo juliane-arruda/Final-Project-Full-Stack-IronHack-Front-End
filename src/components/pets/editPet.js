@@ -5,35 +5,58 @@ class EditPet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        petName: this.props.pet.petName,
-        petDescription: this.props.pet.petDescription,
-        imageUrl: this.props.pet.imageUrl,
-        petLocation: this.props.pet.petLocation,
-        petDate: this.props.pet.petDate,
+        petName: "",
+        petDescription: "",
+        petLocation: "",
+        petDate: "",
         }
-
+        this.getSinglePet = this.getSinglePet.bind(this);
     }
+    componentDidMount() {
+        this.getSinglePet()
+      }
+    
+    getSinglePet() {
+        const { params } = this.props.match;
+        // const { petName, petDescription, petLocation, petDate} = this.state;
+        axios
+          .get(`${process.env.REACT_APP_API}pets/${params.id}`, {
+            //   petName,
+            //   petDescription,
+            //   petLocation,
+            //   petDate
+          })
+          .then(responseFromApi => {
+            const { petName, petDescription, petLocation, petDate} = responseFromApi.data;
+            this.setState({ petName, petDescription, petLocation, petDate});
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
 
+    
+    
     handleFormSubmit(event) {
-        const { petName, petDescription, imageUrl, petLocation, petDate} = this.state;
+        const { params } = this.props.match;
+
+        const { petName, petDescription, petLocation, petDate} = this.state;
 
         event.preventDefault();
     
         axios
           .put(
-            `${process.env.REACT_APP_API}pets/${this.props.pet.id}`,
+            `${process.env.REACT_APP_API}pets/${params.id}`,
             {
               petName,
               petDescription,
-              imageUrl,
               petLocation,
               petDate
             },
           
           )
-          .then(() => {
-            this.props.getThePet();
-            // after submitting the form, redirect to '/projects'
+          .then((response) => {
+            // this.props.getThePet(response);
             this.props.history.push("/pets");
           })
           .catch(error => console.log(error));
@@ -50,7 +73,7 @@ class EditPet extends Component {
         return(
             <div>
         <h2>Editar</h2>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={e => this.handleFormSubmit(e)}>
           <label>Nome do pet: </label>
           <input
             type="text"
@@ -75,9 +98,6 @@ class EditPet extends Component {
                 name="petLocation"
                 value={this.state.petLocation}
                 onChange={e => this.handleChange(e)} />
-          <input
-            type="file"
-            onChange={(e) => this.handleFileUpload(e)} />
           <button type="submit">Editar Pet</button>
         </form>
       </div>
