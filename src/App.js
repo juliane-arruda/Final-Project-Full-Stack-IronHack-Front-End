@@ -108,13 +108,11 @@ class App extends Component {
             user={this.state.loggedInUser}
             component={PetList}
           />/>
-          <EditPet
+          <Route
           exact
             path="/pets/:id/edit"
-            pet={this.state}
+            component={EditPet}
             user={this.state.loggedInUser}
-            getThePet={this.getSinglePet}
-            {...this.props}
           />
         </Switch>
       )}
