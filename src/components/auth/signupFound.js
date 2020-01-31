@@ -105,7 +105,7 @@ handleFormSubmit(event) {
             <input
                 type="text"
                 name="petName"
-                value={this.state.petName}
+                value={this.state.petName} //precisa do nome do pet?
                 onChange={e => this.handleChange(e)} />
           <label>Descrição do pet:</label>
             <textarea
