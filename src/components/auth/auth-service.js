@@ -27,9 +27,9 @@ class AuthService {
     handleUpload(theFile) {
         // console.log('file in service: ', theFile)
         return this.service.post('/upload', theFile)
-          .then(res => res.data)
-          .catch(error => console.log(error));
-      }
+        .then(res => res.data)
+        .catch(error => console.log(error));
+    }
 
     login(username, password) {
         return this.service.post('/login', {
@@ -39,7 +39,15 @@ class AuthService {
         .then(response => response.data)
         }
 
-
+    loggedin() {
+        return this.service.get('/loggedin')
+        .then(response => response.data)
+    }
+    
+    logout() {
+        return this.service.get('/logout')
+        .then(response => response.data)
+    }
 
     AddPet(petName, petDescription, imageUrl, petLocation, petDate) {
         return this.service.post('/add-pet', {
@@ -51,7 +59,10 @@ class AuthService {
             })
             .then(response => response.data)
         }
+
     }
+
+    
 
 export default AuthService;
 

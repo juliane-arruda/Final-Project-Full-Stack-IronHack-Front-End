@@ -23,18 +23,7 @@ class PetList extends Component {
     this.getAllPets();
   }
 
-  deletePet(petID) {
-    axios
-      .delete(`${process.env.REACT_APP_API}pets/${petID}`, {
-        withCredentials: true
-      })
-      .then(() => {
-        this.getAllPets();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+ 
 
   render() {
     return (
@@ -48,12 +37,7 @@ class PetList extends Component {
                   <h3>{pet.petName}</h3>
                 </Link>
                 <img src={pet.imageUrl}/>
-                {/* {this.props.loggedInUser &&
-                  this.props.loggedInUser._id === pet.owner && (
-                    <button onClick={() => this.deletePet(pet._id)}>
-                      Delete pet
-                    </button>
-                  )} */}
+             
     
               </div>
             );
