@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
-import AddPet from '../pets/addPet'
 
 class SignupLost extends Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class SignupLost extends Component {
         username: "", 
         password: "", 
         email: "", 
-        role: "LOST",  
+        role: "perdido",  
         petName: "",
         petDescription: "",
         imageUrl: "",

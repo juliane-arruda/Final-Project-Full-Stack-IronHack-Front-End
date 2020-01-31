@@ -4,33 +4,82 @@ import { Switch, Route } from "react-router-dom";
 import SignupLost from "./components/auth/signupLost";
 import SignupFound from "./components/auth/signupFound";
 // import AddPhoto from './components/AddPhoto';
-import Login from "./components/auth/login"
-import PetList from "./components/pets/petList"
+import Login from "./components/auth/login";
+import PetList from "./components/pets/petList";
+import Home from "./components/home";
+import Navbar from './components/navbar';
+import PetDetails from './components/pets/petDetails'
+import AuthService from "./components/auth/auth-service";
+import EditPet from "./components/pets/editPet";
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { loggedInUser: null };
-
-
+    this.service = new AuthService();
+    this.getTheUser = this.getTheUser.bind(this);
   }
+
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
+      this.service
+        .loggedin()
+        .then(response => {
+          this.setState({
+            loggedInUser: response
+          });
+        })
+        .catch(err => {
+          this.setState({
+            loggedInUser: false
+          });
+        });
+    }
+  }
+
+  getTheUser(userObj) {
+    this.setState({
+      loggedInUser: userObj
+    });
+  }
+
   render() {
 
     return (
       <div className="App">
-        <h1>I cat your pet</h1>
-
+        <Navbar
+        userInSession={this.state.loggedInUser}
+        getUser={this.getTheUser}/>
+        {this.state.loggedInUser ? (
         <Switch>
             <Route
               exact
-              path="/signup-lost"
+              path="/"
               user={this.state.loggedInUser}
-              render={props => <SignupLost getUser={this.getTheUser} {...props} />}
+              render={props => <Home getUser={this.getTheUser} {...props} />}
             />
             <Route
+            exact
+            path="/pets"
+            user={this.state.loggedInUser}
+            component={PetList}
+          />
+          <Route
+            exact
+            path="/pets/:id"
+            user={this.state.loggedInUser}
+            component={PetDetails}
+            {...this.props}
+          />
+          </Switch>
+
+        ) : (
+
+          <Switch>
+            <Route
               exact
-              path="/"
+              path="/login"
               user={this.state.loggedInUser}
               render={props => <Login getUser={this.getTheUser} {...props} />}
             />
@@ -41,14 +90,36 @@ class App extends Component {
               render={props => <SignupFound getUser={this.getTheUser} {...props} />}
             />
             <Route
+              exact
+              path="/signup-lost"
+              user={this.state.loggedInUser}
+              render={props => <SignupLost getUser={this.getTheUser} {...props} />}
+            />
+            <Route
+            exact
+            path="/pets/:id"
+            user={this.state.loggedInUser}
+            component={PetDetails}
+            {...this.props}
+          />
+            <Route
             exact
             path="/pets"
-            // user={this.state.loggedInUser}
+            user={this.state.loggedInUser}
             component={PetList}
           />/>
-
+          <EditPet
+          exact
+            path="/pets/:id/edit"
+            pet={this.state}
+            user={this.state.loggedInUser}
+            getThePet={this.getSinglePet}
+            {...this.props}
+          />
         </Switch>
-
+      )}
+      
+      
         {/* <div className="App"> */}
           {/* <AddPhoto /> */}
         {/* </div> */}

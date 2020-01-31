@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
-import AddPet from '../pets/addPet'
 
 class SignupFound extends Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class SignupFound extends Component {
         username: "", 
         password: "", 
         email: "", 
-        role: "FOUND",  
+        role: "encontrado",  
         petName: "",
         petDescription: "",
         imageUrl: "",
@@ -114,7 +113,7 @@ handleFormSubmit(event) {
                 name="petDescription"
                 value={this.state.petDescription}
                 onChange={e => this.handleChange(e)} />
-          <label>Data que o pet foi perdido:</label>
+          <label>Data que o pet foi achado:</label>
             <input
                 type="date"
                 name="petDate"
