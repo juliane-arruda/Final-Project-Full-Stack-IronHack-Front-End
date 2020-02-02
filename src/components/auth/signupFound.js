@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
+import { AddressMap } from '../map/AddressPickerMap';
 
 class SignupFound extends Component {
   constructor(props) {
@@ -19,16 +20,26 @@ class SignupFound extends Component {
     this.service = new AuthService();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
-        petLocation: {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        }
-      });
+  // componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     this.setState({
+  //       petLocation: {
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //       }
+  //     });
+  //   });
+  // }
+
+  updatePosition(position) {
+    this.setState({
+      petLocation: {
+        latitude: position.lat,
+        longitude: position.lng,
+      }
     });
   }
 
@@ -152,6 +163,14 @@ class SignupFound extends Component {
           <input
             type="file"
             onChange={(e) => this.handleFileUpload(e)} />
+
+          <AddressMap
+            loadingElement={<div style={{ height: '100%' }} />}
+            mapElement={<div style={{ height: '500px' }} />}
+            defaultZoom={18}
+            defaultCenter={{ lat: -23.5617714, lng: -46.6601914 }}
+            onPositionChanged={this.updatePosition}
+          />
 
           <input type="submit" value="Signup" />
         </form>
