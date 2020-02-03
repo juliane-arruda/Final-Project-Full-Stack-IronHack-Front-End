@@ -92,12 +92,12 @@ class EditPet extends Component {
                 name="petDate"
                 value={this.state.petDate}
                 onChange={e => this.handleChange(e)} />
-          <label>Endereço onde o pet foi perdido:</label>
+          {/* <label>Endereço onde o pet foi perdido:</label>
             <input
                 type="text"
                 name="petLocation"
                 value={this.state.petLocation}
-                onChange={e => this.handleChange(e)} />
+                onChange={e => this.handleChange(e)} /> */}
           <button type="submit">Editar Pet</button>
         </form>
       </div>

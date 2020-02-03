@@ -50,7 +50,7 @@ class PetDetails extends Component {
             <h1> {this.state.petName} </h1> 
             <p> {this.state.petDescription} </p>
             <p> Data que foi {this.state.role}: {this.state.petDate} </p>
-        <p> Local onde foi {this.state.role}: {this.state.petLocation} </p>
+            <p>{this.state.role}</p>
             <p> {} </p>
 
             <img src={this.state.imageUrl}/>
