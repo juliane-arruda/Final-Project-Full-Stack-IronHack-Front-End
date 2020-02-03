@@ -11,6 +11,7 @@ import Navbar from './components/navbar';
 import PetDetails from './components/pets/petDetails'
 import AuthService from "./components/auth/auth-service";
 import EditPet from "./components/pets/editPet";
+import PetListMap from './components/pets/map';
 
 
 class App extends Component {
@@ -49,10 +50,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar
-        userInSession={this.state.loggedInUser}
-        getUser={this.getTheUser}/>
+          userInSession={this.state.loggedInUser}
+          getUser={this.getTheUser} />
         {this.state.loggedInUser ? (
-        <Switch>
+          <Switch>
             <Route
               exact
               path="/"
@@ -60,66 +61,77 @@ class App extends Component {
               render={props => <Home getUser={this.getTheUser} {...props} />}
             />
             <Route
-            exact
-            path="/pets"
-            user={this.state.loggedInUser}
-            component={PetList}
-          />
-          <Route
-            exact
-            path="/pets/:id"
-            user={this.state.loggedInUser}
-            component={PetDetails}
-            {...this.props}
-          />
+              exact
+              path="/pets"
+              user={this.state.loggedInUser}
+              component={PetList}
+            />
+            <Route
+              exact
+              path="/map"
+              component={PetListMap}
+              user={this.state.loggedInUser}
+            />
+            <Route
+              exact
+              path="/pets/:id"
+              user={this.state.loggedInUser}
+              component={PetDetails}
+              {...this.props}
+            />
           </Switch>
 
         ) : (
+            <Switch>
+              <Route
+                exact
+                path="/login"
+                user={this.state.loggedInUser}
+                render={props => <Login getUser={this.getTheUser} {...props} />}
+              />
+              <Route
+                exact
+                path="/signup-found"
+                user={this.state.loggedInUser}
+                render={props => <SignupFound getUser={this.getTheUser} {...props} />}
+              />
+              <Route
+                exact
+                path="/signup-lost"
+                user={this.state.loggedInUser}
+                render={props => <SignupLost getUser={this.getTheUser} {...props} />}
+              />
+              <Route
+                exact
+                path="/pets/:id"
+                user={this.state.loggedInUser}
+                component={PetDetails}
+                {...this.props}
+              />
+              <Route
+                exact
+                path="/pets"
+                user={this.state.loggedInUser}
+                component={PetList}
+              />
+              <Route
+                exact
+                path="/map"
+                component={PetListMap}
+                user={this.state.loggedInUser}
+              />
+              <Route
+                exact
+                path="/pets/:id/edit"
+                component={EditPet}
+                user={this.state.loggedInUser}
+              />
+            </Switch>
+          )}
 
-          <Switch>
-            <Route
-              exact
-              path="/login"
-              user={this.state.loggedInUser}
-              render={props => <Login getUser={this.getTheUser} {...props} />}
-            />
-            <Route
-              exact
-              path="/signup-found"
-              user={this.state.loggedInUser}
-              render={props => <SignupFound getUser={this.getTheUser} {...props} />}
-            />
-            <Route
-              exact
-              path="/signup-lost"
-              user={this.state.loggedInUser}
-              render={props => <SignupLost getUser={this.getTheUser} {...props} />}
-            />
-            <Route
-            exact
-            path="/pets/:id"
-            user={this.state.loggedInUser}
-            component={PetDetails}
-            {...this.props}
-          />
-            <Route
-            exact
-            path="/pets"
-            user={this.state.loggedInUser}
-            component={PetList}
-          />/>
-          <Route
-          exact
-            path="/pets/:id/edit"
-            component={EditPet}
-            user={this.state.loggedInUser}
-          />
-        </Switch>
-      )}
-      
-      
+
         {/* <div className="App"> */}
-          {/* <AddPhoto /> */}
+        {/* <AddPhoto /> */}
         {/* </div> */}
 
       </div>
