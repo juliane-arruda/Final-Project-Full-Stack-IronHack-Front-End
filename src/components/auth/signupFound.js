@@ -107,7 +107,7 @@ class SignupFound extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="pt-5">Achei um pet!</h1>
+        <h1 className="pt-5">Achei um pet</h1>
         <Forms
           errorMessage={this.state.message}
           onSubmit={this.handleFormSubmit}
