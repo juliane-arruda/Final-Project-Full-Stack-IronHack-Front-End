@@ -21,8 +21,10 @@ class Navbar extends Component {
     this.service
       .logout()
       .then(() => {
-        this.setState({ loggedInUser: null });
+        this.setState({ loggedInUser: null }, () => console.log(this.state.loggedInUser));
         this.props.getUser(null);
+       
+
       })
       .catch(error => console.log(error));
   }
@@ -51,7 +53,7 @@ class Navbar extends Component {
           <NavLink className="btn btn-outline-primary" to="/login">
               Login
           </NavLink>
-            <NavLink className="btn btn-outline-primary" onClick={() => this.logoutUser()} to="/logout">
+            <NavLink className="btn btn-outline-primary" onClick={() => this.logoutUser()} to="/">
               Logout
           </NavLink>
         </BtNavbar.Collapse>

@@ -9,7 +9,7 @@ class AuthService {
     })
   }
 
-  signup(username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate) {
+  signup(username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate, breed, type) {
     return this.service.post('/signup', {
         username,
         password,
@@ -20,8 +20,16 @@ class AuthService {
         imageUrl,
         petLocation,
         petDate,
+        breed,
+        type,
       })
-      .then(response => response.data)
+      .then(response =>  response.data
+        // this.service.get(`/pet/search/${response.data.aNewPet._id}`)
+        //   .then(res => 
+        //     res
+        //   )
+      
+    )
   }
 
   handleUpload(theFile) {
@@ -39,18 +47,15 @@ class AuthService {
       .then(response => response.data)
   }
 
-  search(username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate, breed) {
-    return this.service.get('/pet/:id/search', {
-      username, 
-      password, 
-      email, 
-      role, petName, 
-      petDescription, 
-      imageUrl, 
-      petLocation, 
-      petDate,
-    })
+  search(id) {
+    return this.service.get(`/pet/search/${id}`)
+    .then(response => response.data)
 
+  }
+
+  logout() {
+    return this.service.get('/logout')
+    .then(response => response.data)
   }
 }
 

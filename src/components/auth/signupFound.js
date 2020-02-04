@@ -53,7 +53,7 @@ class SignupFound extends Component {
 
     const {imageUrl} = this.state;
 
-    console.log(this.state.model);
+    // console.log(this.state.model);
     this.service
       .signup(username,
         password,
@@ -64,9 +64,15 @@ class SignupFound extends Component {
         imageUrl,
         petLocation,
         petDate)
-      .then(user => {
-        this.props.getUser(user);
-        this.props.history.push("/pets")
+      .then(data => {
+        this.service.search(data.aNewPet._id)
+        .then(res => {
+          this.props.getMatch(res)
+          this.props.getUser(data.aNewUser);
+          this.props.getNewPet(data.aNewPet)
+          this.props.history.push("/pet/search")
+
+        })
       })
       .catch(error => {
         console.log(error.response)
