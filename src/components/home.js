@@ -14,10 +14,6 @@ class Home extends Component {
     return (
       <div className="Home">
         <h1>I cat your pet</h1>
-
-       
-
-
       </div>
     )
   }

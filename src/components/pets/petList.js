@@ -23,8 +23,6 @@ class PetList extends Component {
     this.getAllPets();
   }
 
- 
-
   render() {
     return (
       <div>
