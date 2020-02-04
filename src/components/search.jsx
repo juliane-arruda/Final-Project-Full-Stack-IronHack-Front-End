@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Compare extends Component {
+class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -15,7 +15,7 @@ class Compare extends Component {
       getSinglePet() {
         const { params } = this.props.match;
         axios
-          .get(`${process.env.REACT_APP_API}pets/${params.id}`, {
+          .get(`${process.env.REACT_APP_API}pet/${params.id}`, {
           })
           .then(responseFromApi => {
             const pet = responseFromApi.data;
@@ -24,14 +24,6 @@ class Compare extends Component {
           .catch(err => {
             console.log(err);
           });
-      }
-
-      getAllPets() {
-        axios
-        .get(`${process.env.REACT_APP_API}pets`)
-        .then(responseFromApi => {
-         
-        });
       }
 
     render() {
@@ -45,4 +37,4 @@ class Compare extends Component {
     }
 }
 
-export default Compare;
+export default Search;
