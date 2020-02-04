@@ -107,7 +107,7 @@ class SignupFound extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Achei um pet!</h1>
+        <h1 className="pt-5">Achei um pet!</h1>
         <Forms
           errorMessage={this.state.message}
           onSubmit={this.handleFormSubmit}
@@ -115,7 +115,7 @@ class SignupFound extends Component {
           handleFileUpload={this.handleFileUpload}
           loading={this.state.loading}
           onChange={this.handleChange} />
-        <p>
+        <p className="p-3">
           Already have account?
           <Link to={"/"}> Login</Link>
         </p>
