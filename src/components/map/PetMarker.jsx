@@ -28,7 +28,7 @@ class PetMarker extends Component {
             <div>
               <img src={pet.imageUrl} style={{ maxWidth: '300px', maxHeight: '300px' }} />
               <div>
-                <Link to={`/pet/${pet._id}`}>Detalhes</Link>
+                <Link to={`/pets/${pet._id}`}>Detalhes</Link>
               </div>
             </div>
           </InfoWindow>
