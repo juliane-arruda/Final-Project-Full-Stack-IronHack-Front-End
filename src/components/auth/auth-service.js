@@ -39,18 +39,19 @@ class AuthService {
       .then(response => response.data)
   }
 
+  search(username, password, email, role, petName, petDescription, imageUrl, petLocation, petDate, breed) {
+    return this.service.get('/pet/:id/search', {
+      username, 
+      password, 
+      email, 
+      role, petName, 
+      petDescription, 
+      imageUrl, 
+      petLocation, 
+      petDate,
+    })
 
-
-  AddPet(petName, petDescription, imageUrl, petLocation, petDate) {
-    return this.service.post('/add-pet', {
-        petName,
-        petDescription,
-        imageUrl,
-        petLocation,
-        petDate
-      })
-      .then(response => response.data)
   }
 }
-   
+
 export default AuthService;
