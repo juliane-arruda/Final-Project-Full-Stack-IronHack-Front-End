@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
-import { AddressMap } from '../map/AddressPickerMap';
-
+import Forms from './form';
 class SignupFound extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      email: "",
-      role: "encontrado",
-      petName: "",
-      petDescription: "",
-      imageUrl: "",
-      petLocation: null,
-      petDate: "",
+      model: {},
+      message: '',
+      imageUrl: '',
+      loading: false,
     };
     this.service = new AuthService();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -45,6 +39,8 @@ class SignupFound extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    this.setState({message: '', loading: true,});
+
     const {
       username,
       password,
@@ -52,10 +48,13 @@ class SignupFound extends Component {
       role,
       petName,
       petDescription,
-      imageUrl,
       petLocation,
       petDate,
-    } = this.state
+    } = this.state.model;
+
+    const {imageUrl} = this.state;
+
+    console.log(this.state.model);
     this.service
       .signup(username,
         password,
@@ -67,30 +66,23 @@ class SignupFound extends Component {
         petLocation,
         petDate)
       .then(user => {
-        this.setState({
-          username: "",
-          password: "",
-          email: "",
-          petName: "",
-          petDescription: "",
-          imageUrl: "",
-          petLocation: null,
-          petDate: "",
-        });
         this.props.getUser(user);
         this.props.history.push("/pets")
       })
       .catch(error => {
-        console.log(error)
-        // this.setState({
-        // message: error.response
-        // });
+        console.log(error.response)
+        this.setState({
+          message: error.response.data.message
+        });
+      }).finally(()=>{
+        this.setState({loading: false});
       });
   }
 
-  handleChange(event) {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+  handleChange(model) {
+    this.setState({
+      model
+    });
   }
 
   handleFileUpload = e => {
@@ -113,68 +105,16 @@ class SignupFound extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <div>
+      <div className="container">
         <h1>Achei um pet!</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-
-          <label>Nome do pet:</label>
-          <input
-            type="text"
-            name="petName"
-            value={this.state.petName} //precisa do nome do pet?
-            onChange={e => this.handleChange(e)} />
-          <label>Descrição do pet:</label>
-          <textarea
-            type="text"
-            name="petDescription"
-            value={this.state.petDescription}
-            onChange={e => this.handleChange(e)} />
-          <label>Data que o pet foi achado:</label>
-          <input
-            type="date"
-            name="petDate"
-            value={this.state.petDate}
-            onChange={e => this.handleChange(e)} />
-          <input
-            type="file"
-            onChange={(e) => this.handleFileUpload(e)} />
-
-          <AddressMap
-            loadingElement={<div style={{ height: '100%' }} />}
-            mapElement={<div style={{ height: '500px' }} />}
-            defaultZoom={18}
-            defaultCenter={{ lat: -23.5617714, lng: -46.6601914 }}
-            onPositionChanged={this.updatePosition}
-          />
-
-          <input type="submit" value="Signup" />
-        </form>
-        {this.state.message && <p>{this.state.message}</p>}
+        <Forms
+          errorMessage={this.state.message}
+          onSubmit={this.handleFormSubmit}
+          role="encontrado"
+          handleFileUpload={this.handleFileUpload}
+          loading={this.state.loading}
+          onChange={this.handleChange} />
         <p>
           Already have account?
           <Link to={"/"}> Login</Link>

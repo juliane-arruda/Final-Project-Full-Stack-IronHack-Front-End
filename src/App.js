@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Switch, Route } from "react-router-dom";
 import SignupLost from "./components/auth/signupLost";
@@ -51,7 +51,7 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App d-flex conteiner-fluid flex-column h-100 p-5">
+      <div className="App d-flex conteiner-fluid flex-column h-100 pt-5">
         <main className="flex-shrink-0">
           <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
 

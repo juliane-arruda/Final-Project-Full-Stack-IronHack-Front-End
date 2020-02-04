@@ -5,8 +5,6 @@ import {
   Marker,
 } from 'react-google-maps';
 import { LoadGoogleMapsJs } from './LoadGoogleMapsJs';
-import { MapContainer } from './MapContainer';
-// import './DisplayMap.scss';
 
 // const googleMapStylerNoVisibility = [{ visibility: 'off' }];
 const googleMapStylerNoVisibility = [{ visibility: 'on' }];
@@ -69,7 +67,8 @@ export const AddressMap =
     return (
       <LoadGoogleMapsJs loadingElement={loadingElement}>
         <AddressMapAnnotated {...props}
-          containerElement={MapContainer()} />
+          containerElement={<div></div>} 
+          />
       </LoadGoogleMapsJs>
     );
   };
