@@ -114,7 +114,7 @@ class Forms extends Component {
         </Form.Group>
 
         <Form.Group controlId="petDescription" className="col-12">
-          <Form.Label>Descrição do pet:</Form.Label>
+          <Form.Label>Descrição do pet</Form.Label>
           <Form.Control
             as="textarea"
             className="form-control"
