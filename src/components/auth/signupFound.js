@@ -45,7 +45,6 @@ class SignupFound extends Component {
       username,
       password,
       email,
-      role,
       petName,
       petDescription,
       petLocation,
@@ -59,7 +58,7 @@ class SignupFound extends Component {
       .signup(username,
         password,
         email,
-        role,
+        'encontrado', // role
         petName,
         petDescription,
         imageUrl,
@@ -122,7 +121,6 @@ class SignupFound extends Component {
       </div>
     );
   }
-
 }
 
 export default SignupFound;
