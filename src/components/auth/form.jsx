@@ -90,7 +90,8 @@ class Forms extends Component {
           <Form.Label>Data que o pet foi {this.props.role || '!!!'}</Form.Label>
           <div className="input-group mb-2 mr-sm-2">
             <div className="input-group-prepend">
-              <div className="input-group-text">@</div>
+              <div className="input-group-text">@</div> 
+              {/* aqui colcar o calendario */}
             </div>
             <Form.Control
               className="form-control"

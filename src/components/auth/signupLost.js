@@ -47,7 +47,6 @@ class SignupLost extends Component {
       username,
       password,
       email,
-      role,
       petName,
       petDescription,
       petLocation,
@@ -61,7 +60,7 @@ class SignupLost extends Component {
       .signup(username,
         password,
         email,
-        role,
+        'perdido', // role
         petName,
         petDescription,
         imageUrl,
