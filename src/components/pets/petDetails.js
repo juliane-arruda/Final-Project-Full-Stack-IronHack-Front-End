@@ -48,10 +48,10 @@ class PetDetails extends Component {
     return (
       <div className="container">
         <h1 className="pt-5 col-12">Detalhe do Seu Pet</h1>
-        <div className="d-flex">
-          <div className="container">
-            <img src={this.state.imageUrl} />
-          </div>
+        <div className="container d-flex justify-content-around p-5">
+          <picture className="col-12 col-md-6">
+            <img className="img-responsive img-fluid img-thumbnail" src={this.state.imageUrl} />
+          </picture>
           <div className="container">
             <h4>Nome: {this.state.petName} </h4>
             <p>Descrição: {this.state.petDescription} </p>
