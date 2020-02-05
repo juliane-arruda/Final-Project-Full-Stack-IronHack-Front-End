@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 // import EditPet from "./editPet"
 
 
@@ -11,6 +11,7 @@ class PetDetails extends Component {
     this.state = {};
     this.getSinglePet = this.getSinglePet.bind(this);
     this.deletePet = this.deletePet.bind(this);
+    this.backSearch = this.backSearch.bind(this);
   }
   componentDidMount() {
     this.getSinglePet()
@@ -44,6 +45,10 @@ class PetDetails extends Component {
       });
   }
 
+  backSearch() {
+    this.props.history.goBack();
+  }
+
   render() {
     return (
       <div className="container">
@@ -61,14 +66,14 @@ class PetDetails extends Component {
 
             <div className="col-12">
             <Link className="btn btn-danger m-1" onClick={this.deletePet}>
-              Apagar pet
+              Apagar
             </Link>
             <Link className="btn btn-info m-1" to={`/pets/${this.props.match.params.id}/edit`}>
-              Editar pet
+              Editar
             </Link>
             {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
-            <Link className
-            ="btn btn-secondary m-1" to={"/pets"}> Back to pets </Link>
+            <button onClick={this.backSearch} className
+            ="btn btn-secondary m-1"> Voltar </button>
             </div>
           </div>
         </div>
