@@ -16,6 +16,7 @@ class Search extends Component {
     render() {
       console.log('props', this.props)
         return(
+          
           <>
           { this.props.user && this.props.pets && this.props.newPet ? (
             <div className="">
