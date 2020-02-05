@@ -39,7 +39,7 @@ class Login extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="pt-5 card d-flex flex-column justify-content-center">
+      <div className="pt-5 d-flex flex-column justify-content-center">
         <div className="card-body">
           <h3 className="card-title">Login</h3>
           <Form onSubmit={this.handleFormSubmit} className="d-flex flex-column align-items-center">
@@ -60,7 +60,7 @@ class Login extends Component {
               />
             </Form.Group>
 
-            <input type="submit" value="Login" />
+            <input type="button" class="btn btn-secondary btn-lg" type="submit" value="Login" />
           </Form>
           {this.state.message && <p>{this.state.message}</p>}
         </div>
