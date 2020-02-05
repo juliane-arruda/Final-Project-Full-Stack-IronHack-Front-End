@@ -15,14 +15,21 @@ import PetDetails from './components/pets/petDetails'
 import AuthService from "./components/auth/auth-service";
 import EditPet from "./components/pets/editPet";
 import PetListMap from './components/pets/map';
+import Search from './components/search'
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { 
+      loggedInUser: null,
+      newPet: null,
+      pets: null, 
+    };
     this.service = new AuthService();
     this.getTheUser = this.getTheUser.bind(this);
+    this.getMatch = this.getMatch.bind(this);
+    this.getNewPet = this.getNewPet.bind(this);
   }
 
   fetchUser() {
@@ -46,6 +53,20 @@ class App extends Component {
     this.setState({
       loggedInUser: userObj
     });
+  }
+
+  getNewPet(newPet) {
+    this.setState({
+      newPet
+    },
+    () => console.log(this.state.newPet)
+   )
+  }
+
+  getMatch(pets) {
+    this.setState({
+      pets
+    })
   }
 
   render() {
@@ -82,8 +103,23 @@ class App extends Component {
                 component={PetDetails}
                 {...this.props}
               />
+              <Route
+                  exact
+                  path="/pets/:id/edit"
+                  component={EditPet}
+                  user={this.state.loggedInUser}
+                />
+              <Route
+                exact
+                path="/pet/search"
+                render={props => <Search 
+                  user={this.state.loggedInUser}
+                  newPet={this.state.newPet}
+                  pets={this.state.pets}
+                  {...props}
+                />}
+                />
             </Switch>
-
           ) : (
             <Switch>
               <Route
@@ -102,13 +138,13 @@ class App extends Component {
                   exact
                   path="/signup-found"
                   user={this.state.loggedInUser}
-                  render={props => <SignupFound getUser={this.getTheUser} {...props} />}
+                  render={props => <SignupFound getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
                 />
                 <Route
                   exact
                   path="/signup-lost"
                   user={this.state.loggedInUser}
-                  render={props => <SignupLost getUser={this.getTheUser} {...props} />}
+                  render={props => <SignupLost getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
                 />
                 <Route
                   exact
@@ -130,10 +166,14 @@ class App extends Component {
                   user={this.state.loggedInUser}
                 />
                 <Route
-                  exact
-                  path="/pets/:id/edit"
-                  component={EditPet}
+                exact
+                path="/pet/search"
+                render={props => <Search 
                   user={this.state.loggedInUser}
+                  newPet={this.state.newPet}
+                  pets={this.state.pets}
+                  {...props}
+                />}
                 />
               </Switch>
             )}
