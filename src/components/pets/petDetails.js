@@ -16,7 +16,7 @@ const StaticMap = ({width, height, position}) => {
 
 class PetDetails extends Component {
   constructor(props) {
-    console.log(props)
+    console.log('props', props)
     super(props);
     this.state = {
       message: false
@@ -64,7 +64,6 @@ class PetDetails extends Component {
     if (this.state) {
       let petEmail = this.state.owner.email;
       let userEmail = this.props.user.user.email
-      console.log(userEmail)
       this.service
       .email(petEmail, userEmail)
       .then(() => this.setState({message: true}))
@@ -79,7 +78,7 @@ class PetDetails extends Component {
   }
   
   render() {
-    console.log(this.state)
+    console.log('this.state',this.state)
     return (
       <div className="container h-100">
         <h1 className="pt-5 col-12">Detalhes</h1>
@@ -99,16 +98,24 @@ class PetDetails extends Component {
             />}
 
             <div className="col-12">
-
+              { this.state.owner &&
+              this.props.user  &&
+                  this.props.user.user._id === this.state.owner._id && (
+            <>
             <Link className="btn btn-danger m-1" onClick={this.deletePet}>
               Apagar
             </Link>
             <Link className="btn btn-info m-1" to={`/pets/${this.props.match.params.id}/edit`}>
               Editar
             </Link>
+            </>
+                  )}
             {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
+            <div>
             <button onClick={this.backSearch} className
             ="btn btn-secondary m-1"> Voltar </button>
+              
+            </div>
 
             </div>
             <Link className="btn btn-secondary m-1" onClick={this.email}>
