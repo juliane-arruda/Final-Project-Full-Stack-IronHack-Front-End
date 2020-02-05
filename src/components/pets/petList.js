@@ -35,8 +35,6 @@ class PetList extends Component {
                   <h3>{pet.petName}</h3>
                 </Link>
                 <img src={pet.imageUrl}/>
-             
-    
               </div>
             );
           })}
