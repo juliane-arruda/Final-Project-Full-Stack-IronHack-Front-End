@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
-// import EditPet from "./editPet"
+import AuthService from '../auth/auth-service';
+
 
 const StaticMap = ({width, height, position}) => {
   const location = `${position[1]},${position[0]}`;
@@ -15,51 +16,70 @@ const StaticMap = ({width, height, position}) => {
 
 class PetDetails extends Component {
   constructor(props) {
-    // console.log(props)
+    console.log(props)
     super(props);
-    this.state = {};
+    this.state = {
+      message: false
+    };
     this.getSinglePet = this.getSinglePet.bind(this);
     this.deletePet = this.deletePet.bind(this);
     this.backSearch = this.backSearch.bind(this);
+    this.email = this.email.bind(this);
+    this.service = new AuthService();
   }
   componentDidMount() {
     this.getSinglePet()
   }
-
+  
   getSinglePet() {
     const { params } = this.props.match;
     axios
-      .get(`${process.env.REACT_APP_API}pets/${params.id}`, {
-      })
-      .then(responseFromApi => {
-        const pet = responseFromApi.data;
-
-        this.setState(pet);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    .get(`${process.env.REACT_APP_API}pets/${params.id}`, {
+    })
+    .then(responseFromApi => {
+      const pet = responseFromApi.data;
+      
+      this.setState(pet);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
-
+  
   deletePet() {
     const { params } = this.props.match;
-    console.log(params.id, "id")
+    // console.log(params.id, "id")
     axios
-      .delete(`${process.env.REACT_APP_API}pets/${params.id}`, {
-      })
-      .then(() => {
-        this.props.history.push("/pets");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    .delete(`${process.env.REACT_APP_API}pets/${params.id}`, {
+    })
+    .then(() => {
+      this.props.history.push("/pets");
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
-
+  
+  email() {
+    if (this.state) {
+      let petEmail = this.state.owner.email;
+      let userEmail = this.props.user.user.email
+      console.log(userEmail)
+      this.service
+      .email(petEmail, userEmail)
+      .then(() => this.setState({message: true}))
+      .catch(err => {
+        console.log(err)
+      });
+    }
+  }
+  
   backSearch() {
     this.props.history.goBack();
   }
-
+  
   render() {
+    console.log(this.state)
     return (
       <div className="container h-100">
         <h1 className="pt-5 col-12">Detalhes</h1>
@@ -91,6 +111,10 @@ class PetDetails extends Component {
             ="btn btn-secondary m-1"> Voltar </button>
 
             </div>
+            <Link className="btn btn-secondary m-1" onClick={this.email}>
+              Enviar Email
+            </Link>
+            {this.state.message && <h1>Email enviado com sucesso</h1>}
           </div>
         </div>
 

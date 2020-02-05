@@ -18,6 +18,7 @@ import PetListMap from './components/pets/map';
 import Search from './components/search'
 
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -99,10 +100,13 @@ class App extends Component {
               <Route
                 exact
                 path="/pets/:id"
-                user={this.state.loggedInUser}
-                component={PetDetails}
-                {...this.props}
-              />
+                render={props => <PetDetails
+                  user={this.state.loggedInUser}
+                  newPet={this.state.newPet}
+                  pets={this.state.pets}
+                  {...props}
+                  />}
+                  />
               <Route
                   exact
                   path="/pets/:id/edit"
@@ -119,6 +123,7 @@ class App extends Component {
                   {...props}
                 />}
                 />
+              />
             </Switch>
           ) : (
             <Switch>
@@ -141,18 +146,22 @@ class App extends Component {
                   render={props => <SignupFound getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
                 />
                 <Route
+                exact
+                path="/pets/:id"
+                render={props => <PetDetails
+                  user={this.state.loggedInUser}
+                  newPet={this.state.newPet}
+                  pets={this.state.pets}
+                  {...props}
+                  />}
+                  />
+                <Route
                   exact
                   path="/signup-lost"
                   user={this.state.loggedInUser}
                   render={props => <SignupLost getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
                 />
-                <Route
-                  exact
-                  path="/pets/:id"
-                  user={this.state.loggedInUser}
-                  component={PetDetails}
-                  {...this.props}
-                />
+             
                 <Route
                   exact
                   path="/pets"

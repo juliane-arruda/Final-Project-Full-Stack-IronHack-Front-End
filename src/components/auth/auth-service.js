@@ -57,6 +57,15 @@ class AuthService {
     return this.service.get('/logout')
     .then(response => response.data)
   }
+
+
+  email(petEmail, userEmail) {
+    return this.service.post('/send-email', {
+      petEmail,
+      userEmail
+    }) 
+    .then(response => response.data)
+  }
 }
 
 export default AuthService;
