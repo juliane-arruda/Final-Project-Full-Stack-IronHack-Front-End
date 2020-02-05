@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-import AuthService from '../components/auth/auth-service';
+
 
 
 class Search extends Component {
@@ -10,7 +9,7 @@ class Search extends Component {
         super(props);
         this.state = {}
       
-  
+
       }
 
     render() {
