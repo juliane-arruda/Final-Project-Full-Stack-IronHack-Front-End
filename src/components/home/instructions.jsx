@@ -4,7 +4,7 @@ import {Parallax} from 'react-parallax';
 const Instructions = () => (
   <div>
     <img src="/images/fofo.jpg" alt="background"/>
-    <img src="/images/pets.jpg" alt="pets"/>
+    <img src="/images/pets.png" alt="pets"/>
     <div className="container">
     <h5>como usar nossa ferramenta</h5>
     <p>
