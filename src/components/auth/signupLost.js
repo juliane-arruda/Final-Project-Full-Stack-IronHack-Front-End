@@ -114,7 +114,7 @@ class SignupLost extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="pt-5">Perdi meu pet</h1>
+        <h1 className="pt-5">Perdi meu Pet</h1>
         <Forms
           errorMessage={this.state.message}
           onSubmit={this.handleFormSubmit}
