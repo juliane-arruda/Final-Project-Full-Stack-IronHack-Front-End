@@ -88,18 +88,12 @@ class Forms extends Component {
 
         <Form.Group controlId="petDate" className="col-12 col-md-6 col-lg-4">
           <Form.Label>Data que o pet foi {this.props.role || '!!!'}</Form.Label>
-          <div className="input-group mb-2 mr-sm-2">
-            <div className="input-group-prepend">
-              <div className="input-group-text">@</div> 
-              {/* aqui colcar o calendario */}
-            </div>
             <Form.Control
               className="form-control"
               type="date"
               name="petDate"
               value={this.state.petDate}
               onChange={e => this.handleChange(e)} />
-          </div>
         </Form.Group>
 
         <Form.Group controlId="petPhoto" className="col-12 col-md-6 col-lg-4">
