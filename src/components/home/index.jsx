@@ -9,10 +9,10 @@ import Contact from './contact';
 
 const Home = () => (
   <div>
-    <Intro />
-    <About />
-    <HowItWorks />
-    <Instructions />
+    {/* <Intro /> */}
+    {/* <About /> */}
+    {/* <HowItWorks /> */}
+    {/* <Instructions /> */}
     <Contact />
   </div>
 );
