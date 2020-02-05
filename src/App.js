@@ -8,7 +8,7 @@ import SignupFound from "./components/auth/signupFound";
 // import AddPhoto from './components/AddPhoto';
 import Login from "./components/auth/login";
 import PetList from "./components/pets/petList";
-import Home from "./components/home";
+import Home from "./components/home/index";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import PetDetails from './components/pets/petDetails'
@@ -121,7 +121,13 @@ class App extends Component {
                 />
             </Switch>
           ) : (
-              <Switch>
+            <Switch>
+              <Route
+                  exact
+                  path="/"
+                  user={this.state.loggedInUser}
+                  render={props => <Home getUser={this.getTheUser} {...props} />}
+                />
                 <Route
                   exact
                   path="/login"
