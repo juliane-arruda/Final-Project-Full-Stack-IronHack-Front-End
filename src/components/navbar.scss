@@ -1,0 +1,35 @@
+.Navbar {
+  height: 73px;
+
+  a:hover {
+    text-decoration: none;
+  }
+  
+  .navbar {
+    min-height: 73px;
+    background-color: #fff;
+    
+    .logo {
+      max-height: 40px;
+    }
+  }
+  
+  &.home {
+    min-height: 60px;
+    // transition: height .4s ease;
+    background-color: #E1E1E1;
+
+    .navbar {
+      transition: all .4s ease;
+    }
+
+    &.top:not(.menu-open) {
+      .navbar {
+        height: 100px;
+        background-color: rgba(255,255,255,0);
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,0) !important;
+        border-bottom-color: rgba(222, 226, 230, 0) !important;
+      }
+    }
+  }
+}

@@ -73,10 +73,9 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App d-flex conteiner-fluid flex-column h-100 pt-5">
+      <div className="App d-flex conteiner-fluid flex-column h-100">
         <main className="flex-shrink-0">
-          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
-
+          <Route path="/" render={({ match })=> <Navbar isHome={match.isExact} userInSession={this.state.loggedInUser} getUser={this.getTheUser} />} />
           {this.state.loggedInUser ? (
             <Switch>
               <Route

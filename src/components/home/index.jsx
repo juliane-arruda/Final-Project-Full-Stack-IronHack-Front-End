@@ -5,14 +5,16 @@ import About from './about';
 import HowItWorks from './howItWorks';
 import Instructions from './instructions';
 import Contact from './contact';
+import Depositions from './depositions';
 
 
 const Home = () => (
   <div>
-    {/* <Intro /> */}
+    <Intro />
     {/* <About /> */}
-    {/* <HowItWorks /> */}
-    {/* <Instructions /> */}
+    <HowItWorks />
+    <Instructions />
+    <Depositions/>
     <Contact />
   </div>
 );

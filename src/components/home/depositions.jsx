@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Depositions = () => (
-  <div className="container">
-    <h2 className="p-5">Depoimentos</h2>
+  <div className="container p-5">
+    <h2 className="pb-5">Depoimentos</h2>
     <div className="row justify-content-center">
       <div className="col-12 col-md-6 col-lg-4 mt-2">
         <div className="d-flex align-items-center">
