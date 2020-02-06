@@ -3,12 +3,12 @@ import './contact.css';
 import 'bootstrap-social';
 
 const Contact = () => (
-  <div className="container-fluid background">
+  <div className="container-fluid background-contact">
     <div className="container d-inline-flex flex-column flex-md-row align-items-center justify-content-around row mt-5">
       {/* <img src="/images/fundo.png" alt="background"/> */}
       <div className="col-12 col-md-6 col-lg-4">
         <h4>Contato</h4>
-        <p>Telefone: (21) 2233-5950</p>
+        <p>Telefone: (11) 1234-5678</p>
         <p>E-mail: icatyoupet@gmail.com</p>
         <p>Alameda Jaú, 1301 - Jardim Paulista,<br /> São Paulo - SP, 01420-001</p>
       </div>
