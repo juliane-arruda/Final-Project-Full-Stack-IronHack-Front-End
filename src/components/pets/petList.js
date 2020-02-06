@@ -26,21 +26,22 @@ class PetList extends Component {
   render() {
     return (
       <div>
-        <div className="row row-cols-1 row-cols-md-4" >
+        <div className="row row-cols-1 row-cols-md-4 m-5 d-flex justify-content-center" >
 
           {this.state.listOfPets && this.state.listOfPets.map(pet => {
             return (
 
-        <div className="card" style={{width: "18rem"}} id={pet._id} key={pet._id}>
+        <div className="card m-2" id={pet._id} key={pet._id}>
        
         <img src={pet.imageUrl} className="card-img-top"/>
        
     <div className="card-body">
-        <h5 className="card-title">{pet.petName}</h5>
+      <Link to={`/pets/${pet._id}`} className="card-title">{pet.petName}</Link>
           <p className="card-text">{pet.role}</p>
-      <Link to={`/pets/${pet._id}`} className="btn btn-primary">Detalhes</Link>
     </div>
       </div>
+
+
 
             );
           })}
