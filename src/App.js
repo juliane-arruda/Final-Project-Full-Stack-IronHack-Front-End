@@ -19,10 +19,10 @@ import Search from './components/search';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       loggedInUser: null,
       newPet: null,
-      pets: null, 
+      pets: null,
     };
     this.service = new AuthService();
     this.getTheUser = this.getTheUser.bind(this);
@@ -57,8 +57,8 @@ class App extends Component {
     this.setState({
       newPet
     },
-    () => console.log(this.state.newPet)
-   )
+      () => console.log(this.state.newPet)
+    )
   }
 
   getMatch(pets) {
@@ -73,87 +73,82 @@ class App extends Component {
       <div className="App d-flex conteiner-fluid flex-column h-100">
         <main className="flex-shrink-0">
 
-          <Route path="/" render={({ match })=> <Navbar isHome={match.isExact} userInSession={this.state.loggedInUser} getUser={this.getTheUser} />} />
-          {this.state.loggedInUser ? (
+          <Route path="/" render={({ match }) =>
+            <Navbar isHome={match.isExact} userInSession={this.state.loggedInUser} getUser={this.getTheUser} />} />
 
-          <Navbar/>
-            
-            <Switch>
-              <Route
-                exact
-                path="/"
+          <Switch>
+
+            <Route
+              exact
+              path="/"
+              user={this.state.loggedInUser}
+              render={props => <Home getUser={this.getTheUser} {...props} />}
+            />
+            <Route
+              exact
+              path="/pets"
+              user={this.state.loggedInUser}
+              component={PetList}
+            />
+            <Route
+              exact
+              path="/map"
+              component={PetListMap}
+              user={this.state.loggedInUser}
+            />
+            <Route
+              exact
+              path="/pets/:id"
+              render={props => <PetDetails
                 user={this.state.loggedInUser}
-                render={props => <Home getUser={this.getTheUser} {...props} />}
-              />
-              <Route
-                exact
-                path="/pets"
+                newPet={this.state.newPet}
+                pets={this.state.pets}
+                {...props}
+              />}
+            />
+            <Route
+              exact
+              path="/pets/:id/edit"
+              component={EditPet}
+              user={this.state.loggedInUser}
+            />
+            <Route
+              exact
+              path="/pet/search"
+              render={props => <Search
                 user={this.state.loggedInUser}
-                component={PetList}
-              />
-              <Route
-                exact
-                path="/map"
-                component={PetListMap}
-                user={this.state.loggedInUser}
-              />
-              <Route
-                exact
-                path="/pets/:id"
-                render={props => <PetDetails
-                  user={this.state.loggedInUser}
-                  newPet={this.state.newPet}
-                  pets={this.state.pets}
-                  {...props}
-                  />}
-                  />
-              <Route
-                  exact
-                  path="/pets/:id/edit"
-                  component={EditPet}
-                  user={this.state.loggedInUser}
-                />
-              <Route
-                exact
-                path="/pet/search"
-                render={props => <Search 
-                  user={this.state.loggedInUser}
-                  newPet={this.state.newPet}
-                  pets={this.state.pets}
-                  {...props}
-                />}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  user={this.state.loggedInUser}
-                  render={props => <Login getUser={this.getTheUser} {...props} />}
-                />
-                <Route
-                  exact
-                  path="/signup-found"
-                  user={this.state.loggedInUser}
-                  render={props => <SignupFound getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
-                />
+                newPet={this.state.newPet}
+                pets={this.state.pets}
+                {...props}
+              />}
+            />
+            <Route
+              exact
+              path="/login"
+              user={this.state.loggedInUser}
+              render={props => <Login getUser={this.getTheUser} {...props} />}
+            />
+            <Route
+              exact
+              path="/signup-found"
+              user={this.state.loggedInUser}
+              render={props => <SignupFound getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
+            />
 
-                <Route
-                  exact
-                  path="/signup-lost"
-                  user={this.state.loggedInUser}
-                  render={props => <SignupLost getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
-                />
+            <Route
+              exact
+              path="/signup-lost"
+              user={this.state.loggedInUser}
+              render={props => <SignupLost getUser={this.getTheUser} {...props} getMatch={this.getMatch} getNewPet={this.getNewPet} />}
+            />
 
+          </Switch>
 
-              </Switch>
-
-            
-
-        
         </main>
         <Footer />
       </div>
-    )
-  }
-}
-
-export default App;
+        )
+      }
+    }
+    
+    export default App;
