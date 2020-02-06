@@ -1,0 +1,13 @@
+.pet-image {
+  width: 286px;
+  height: 286px;
+  object-fit: cover;
+}
+
+.test-1 {
+  border: blue solid 1px;
+}
+
+.test-2 {
+  border: purple solid 1px;
+}
