@@ -37,11 +37,10 @@
   }
 }
 
-.search-photo {
-  width: 25vw;
-}
+
 
 .card-img-top {
     height: 15vw;
+    object-fit: cover;
     /* max-width: 30vw; */
 }

@@ -19,26 +19,26 @@ class Search extends Component {
           
           <>
           { this.props.user && this.props.pets && this.props.newPet ? (
-            <div className="">
+            <div className="d-flex">
               
-              <h1>Buscar</h1>
+              <h1>Resultado de Busca</h1>
               <div>
             <h1> {this.props.newPet.petName} </h1> 
             <img src={this.props.newPet.imageUrl}/>
               </div>
               
-            <div className="row row-cols-1 row-cols-md-2" >
+            <div className="row row-cols-1 row-cols-md-4 m-5 d-flex justify-content-center" >
               {this.props.pets.map((el) => (
           
-          <div className="card mb-3" style={{width: "540px"}}>
+          <div className="card mb-3 m-5">
                 <div className="row no-gutters">
                   <div className="col-md-4">
-                    <img src={el.imageUrl} className="card-img"/>
+                    <img src={el.imageUrl} className="h-10vw"/>
                   </div>
                     <div className="col-md-8">
                       <div className="card-body">
                   <Link to={`/pets/${el._id}`} className="card-title">{el.petName}</Link>
-                  <p className="card-text">{el.petDescription}</p>
+                  {/* <p className="card-text">{el.petDescription}</p> */}
                   <p className="card-text"><small className="text-muted">Perdido em {el.petDate}</small></p>
                 </div>
                 </div>

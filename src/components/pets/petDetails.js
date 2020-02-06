@@ -19,7 +19,8 @@ class PetDetails extends Component {
     console.log('props', props)
     super(props);
     this.state = {
-      message: false
+      message: false,
+      loggedInUser: null,
     };
     this.getSinglePet = this.getSinglePet.bind(this);
     this.deletePet = this.deletePet.bind(this);
@@ -61,15 +62,17 @@ class PetDetails extends Component {
   }
   
   email() {
-    if (this.state) {
+    if (this.state && this.loggedInUser)  {
       let petEmail = this.state.owner.email;
       let userEmail = this.props.user.user.email
       this.service
       .email(petEmail, userEmail)
       .then(() => this.setState({message: true}))
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       });
+    } else {
+      this.props.history.push("/login");
     }
   }
   
@@ -85,12 +88,12 @@ class PetDetails extends Component {
         <div className="container d-flex flex-column flex-md-row align-items-center justify-content-around p-5">
           <div className="col-12 col-md-6">
             <img className="img-fluid img-thumbnail" src={this.state.imageUrl} />
-          </div>
-          <div className="col-12 col-md-6 mt-3 mt-md-0">
             <h4>{this.state.petName}</h4>
             <p>{this.state.petDescription} </p>
             <p>Data que foi {this.state.role}: {this.state.petDate} </p>
-            <p>Local em que foi {this.state.role}:</p>
+            <p>{this.state.role}</p>
+          </div>
+          <div className="col-12 col-md-6 mt-3 mt-md-0">
             {this.state.petLocation && <StaticMap
               width={800}
               height={600}
@@ -121,7 +124,7 @@ class PetDetails extends Component {
             <Link className="btn btn-secondary m-1" onClick={this.email}>
               Enviar Email
             </Link>
-            {this.state.message && <h1>Email enviado com sucesso</h1>}
+            {this.state.message && <h2 className="">Email enviado com sucesso! Em breve você receberá uma resposta.</h2>}
           </div>
         </div>
 
