@@ -41,7 +41,8 @@ class Forms extends Component {
 
   handleFileUpload(e) {
     this.setState({file:e.target.files[0]});
-    this.props.handleFileUpload(e);
+    
+    console.log(this.props.handleFileUpload(e))
   }
 
   render() {
@@ -99,7 +100,7 @@ class Forms extends Component {
         <Form.Group controlId="petPhoto" className="col-12 col-md-6 col-lg-4">
           <Form.Label>Foto do pet</Form.Label>
           <div className="custom-file">
-            <label className="custom-file-label" htmlFor="petPhoto">
+            <label className="custom-file-label text-left overflow-hidden" htmlFor="petPhoto">
               {this.state.file ? this.state.file.name : 'Choose file...'}
             </label>
             <Form.Control
@@ -131,11 +132,18 @@ class Forms extends Component {
         </div>
 
         <div className="col-12 mt-3">
+          {this.props.imgUpload ? 
+          <Button
+            type="submit float-right">
+            {this.props.loading ? 'Salvando' : 'Signup'}
+          </Button> 
+          : 
           <Button
             type="submit float-right"
-            disabled={this.props.loading}>
+            disabled>
             {this.props.loading ? 'Salvando' : 'Signup'}
-          </Button>
+          </Button> 
+            }
         </div>
       </Form>
     );

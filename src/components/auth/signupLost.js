@@ -12,6 +12,7 @@ class SignupLost extends Component {
       message: '',
       imageUrl: '',
       loading: false,
+      imgUpload: false,
     };
     this.service = new AuthService();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -104,7 +105,7 @@ class SignupLost extends Component {
       .then(response => {
         console.log('response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
-        this.setState({ imageUrl: response.secure_url });
+        this.setState({ imageUrl: response.secure_url, imgUpload: true });
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
@@ -120,6 +121,7 @@ class SignupLost extends Component {
           onSubmit={this.handleFormSubmit}
           role="perdido"
           handleFileUpload={this.handleFileUpload}
+          imgUpload={this.state.imgUpload}
           loading={this.state.loading}
           onChange={this.handleChange} />
         <p className="p-3">
