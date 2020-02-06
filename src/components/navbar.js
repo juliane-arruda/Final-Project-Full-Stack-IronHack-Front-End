@@ -55,8 +55,11 @@ class Navbar extends Component {
     return (
       <div className={`Navbar ${isHome ? 'home' : ''} ${onTop ? 'top' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
         <BtNavbar onToggle={this.onToggle} fixed="top" expand="lg" className="d-flex flex-row p-3 px-lg-4 mb-3 border-bottom shadow-sm">
+        <NavLink className="d-flex align-items-center" to="/">
         <img src="/images/logo.png" alt="Cat and Dog logo" className="logo mr-3" />
           <h5 className="my-0 mr-lg-auto font-weight-normal">I Cat Your Pets</h5>
+        </NavLink>
+        
           <BtNavbar.Toggle aria-controls="basic-navbar-nav" />
           <BtNavbar.Collapse onAuxClick={this.menuClick} className="d-lg-flex flex-row justify-content-end" id="basic-navbar-nav">
             <nav className="d-flex flex-column flex-lg-row align-content-center my-2 my-lg-0 mr-lg-3" id="menu">
