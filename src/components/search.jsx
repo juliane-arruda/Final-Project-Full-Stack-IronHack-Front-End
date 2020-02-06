@@ -19,7 +19,7 @@ class Search extends Component {
           
           <>
           { this.props.user && this.props.pets && this.props.newPet ? (
-            <div className="d-flex">
+            <div className=" container-details d-flex">
               
               <h1>Resultado de Busca</h1>
               <div>
@@ -33,7 +33,7 @@ class Search extends Component {
           <div className="card mb-3 m-5">
                 <div className="row no-gutters">
                   <div className="col-md-4">
-                    <img src={el.imageUrl} className="h-10vw"/>
+                    <img src={el.imageUrl} className="search-img h-10vw"/>
                   </div>
                     <div className="col-md-8">
                       <div className="card-body">
