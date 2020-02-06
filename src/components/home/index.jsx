@@ -11,7 +11,7 @@ import Depositions from './depositions';
 const Home = () => (
   <div>
     <Intro />
-    {/* <About /> */}
+    <About />
     <HowItWorks />
     <Instructions />
     <Depositions/>
