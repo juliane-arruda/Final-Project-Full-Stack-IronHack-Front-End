@@ -28,7 +28,7 @@ class Search extends Component {
               </div>
               
             <div className="row row-cols-1 row-cols-md-4 m-5 d-flex justify-content-center" >
-              {this.props.pets.map((el) => (
+              {this.props.pets.length > 0 ? this.props.pets.map((el) => (
           
           <div className="card mb-3 m-5">
                 <div className="row no-gutters">
@@ -38,14 +38,14 @@ class Search extends Component {
                     <div className="col-md-8">
                       <div className="card-body">
                   <Link to={`/pets/${el._id}`} className="card-title">{el.petName}</Link>
-                  {/* <p className="card-text">{el.petDescription}</p> */}
                   <p className="card-text"><small className="text-muted">Perdido em {el.petDate}</small></p>
                 </div>
                 </div>
               </div>
         </div>
-))}
+)) : <p>Nenhum pet parecido foi encontrado, em breve alguém entrará em contato com novas informações.</p>
 
+              }
               </div>
 
             </div>
