@@ -105,7 +105,7 @@ class Forms extends Component {
             <Form.Control
               type="file"
               onChange={this.handleFileUpload} />
-          </div>
+          </div>;
         </Form.Group>
 
         <Form.Group controlId="petDescription" className="col-12">

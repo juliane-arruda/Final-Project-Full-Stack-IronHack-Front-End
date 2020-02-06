@@ -1,65 +1,116 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
-// import Navbar from 'react-bootstrap/Navbar'
 import AuthService from "./auth/auth-service";
-// import Boostrap from 'bootstrap';
 import BtNavbar from 'react-bootstrap/Navbar';
+import './navbar.scss';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
     this.service = new AuthService();
+    this.state = {
+      onTop: window.scrollY < 50,
+      isMenuOpen: false,
+    };
+    this.onScroll = this.onScroll.bind(this);
+    this.onToggle = this.onToggle.bind(this);
+  }
 
+  componentDidMount(){
+    window.addEventListener('scroll', this.onScroll);
   }
-  componentDidUpdate(prevProps) {
-    if (this.props.userInSession !== prevProps.userInSession) {
-      this.setState({ loggedInUser: this.props.userInSession });
-    }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
   }
+
+  onScroll() {
+    this.setState({
+      onTop: window.scrollY < 50,
+    });
+  }
+
   logoutUser() {
     this.service
       .logout()
       .then(() => {
         this.setState({ loggedInUser: null }, () => console.log(this.state.loggedInUser));
         this.props.getUser(null);
-       
-
       })
       .catch(error => console.log(error));
   }
+
+  onToggle(expanded) {
+    this.setState({
+      isMenuOpen: expanded,
+    });
+  }
+
   render() {
-    console.log(this.state.loggedInUser)
+    console.log(this.state.loggedInUser);
+    const { isHome, userInSession } = this.props;
+    const { onTop, isMenuOpen } = this.state;
+    console.log({isMenuOpen})
 
     return (
-      <BtNavbar fixed="top" expand="lg" className="d-flex flex-row p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 className="my-0 mr-md-auto font-weight-normal">I Cat Your Pets</h5>
-        <BtNavbar.Toggle aria-controls="basic-navbar-nav" />
-        <BtNavbar.Collapse className="d-lg-flex flex-row justify-content-end" id="basic-navbar-nav">
-          <nav className="d-flex flex-column flex-lg-row align-content-center my-2 my-md-0 mr-md-3" id="menu">
-            <NavLink className="p-2 text-dark" activeStyle={{ color: "red" }} to="/pets">
-              Pets
-            </NavLink>
-            <NavLink className="p-2 text-dark" to="/signup-found" style={{ textDecoration: "none" }}>
-              Encontrei um pet
-            </NavLink>
-            <NavLink className="p-2 text-dark" to="/signup-lost" style={{ textDecoration: "none" }}>
-              Perdi meu pet
-            </NavLink>
-            <NavLink className="p-2 text-dark" activeStyle={{ color: "yellow" }} to="/map" style={{ textDecoration: "none" }}>
-              Mapa
-            </NavLink>
-          </nav>
-          <NavLink className="btn btn-outline-primary" to="/login">
-              Login
-          </NavLink>
-            <NavLink className="btn btn-outline-primary" onClick={() => this.logoutUser()} to="/">
-              Logout
-          </NavLink>
-        </BtNavbar.Collapse>
-      </BtNavbar>
+      <div className={`Navbar ${isHome ? 'home' : ''} ${onTop ? 'top' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
+        <BtNavbar onToggle={this.onToggle} fixed="top" expand="lg" className="d-flex flex-row p-3 px-lg-4 mb-3 border-bottom shadow-sm">
+        <img src="/images/logo.png" alt="Cat and Dog logo" className="logo mr-3" />
+          <h5 className="my-0 mr-lg-auto font-weight-normal">I Cat Your Pets</h5>
+          <BtNavbar.Toggle aria-controls="basic-navbar-nav" />
+          <BtNavbar.Collapse onAuxClick={this.menuClick} className="d-lg-flex flex-row justify-content-end" id="basic-navbar-nav">
+            <nav className="d-flex flex-column flex-lg-row align-content-center my-2 my-lg-0 mr-lg-3" id="menu">
+              {userInSession && (
+                <>
+                  <NavLink className="p-2 text-dark" activeStyle={{ color: "red" }} to="/pets">
+                    Pets
+                  </NavLink>
+                  <NavLink className="p-2 text-dark" to="/signup-found" style={{ textDecoration: "none" }}>
+                    Encontrei um pet
+                  </NavLink>
+                  <NavLink className="p-2 text-dark" to="/signup-lost" style={{ textDecoration: "none" }}>
+                    Perdi meu pet
+                  </NavLink>
+                  <NavLink className="p-2 text-dark" activeStyle={{ color: "yellow" }} to="/map" style={{ textDecoration: "none" }}>
+                    Mapa
+                  </NavLink>
+                </>
+              )}
+              {!userInSession && (
+                <>
+                  <NavLink to="/#about" className="p-2 text-dark">Sobre</NavLink>
+                  <NavLink to="/#howItWorks" className="p-2 text-dark">Como funciona?</NavLink>
+                  <NavLink to="/#instructions" className="p-2 text-dark">Instruções</NavLink>
+                  <NavLink to="/#depositions" className="p-2 text-dark">Depoimentos</NavLink>
+                  <NavLink to="/#contact" className="p-2 text-dark">Contato</NavLink>
+                  {/* <NavLink className="p-2 text-dark" to="/signup-found">
+                    Encontrei um pet
+                  </NavLink>
+                  <NavLink className="p-2 text-dark" to="/signup-lost">
+                    Perdi meu pet
+                  </NavLink> */}
+                </>
+              )}
+            </nav>
+            {!userInSession && (
+              <>
+                <NavLink className="btn btn-outline-primary mr-2" to="/login">
+                  Login
+                </NavLink>
+                <NavLink className="btn btn-outline-primary" to="/signup">
+                  Criar conta
+                </NavLink>
+              </>
+            )}
+            {userInSession && (
+              <NavLink className="btn btn-outline-danger" onClick={() => this.logoutUser()} to="/" exact>
+                  Logout
+              </NavLink>
+            )}
+          </BtNavbar.Collapse>
+        </BtNavbar>
+      </div>
     );
-
   }
 }
 

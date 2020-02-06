@@ -5,6 +5,7 @@ import About from './about';
 import HowItWorks from './howItWorks';
 import Instructions from './instructions';
 import Contact from './contact';
+import Depositions from './depositions';
 
 
 const Home = () => (
@@ -13,6 +14,7 @@ const Home = () => (
     <About />
     <HowItWorks />
     <Instructions />
+    <Depositions/>
     <Contact />
   </div>
 );
