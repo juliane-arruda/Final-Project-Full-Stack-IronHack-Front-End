@@ -2,8 +2,8 @@ import React from 'react';
 import './howItWorks.css'
 
 const HowItWorks = () => (
-  <div className="container-fluid test-1">
-    <h2 className="p-5">Como Funciona</h2>
+  <div className="container-fluid p-5 test-1">
+    <h2 className="pb-5">Como Funciona</h2>
     <div className="row justify-content-center">
       <div className="test-2 col-12 col-md-6 col-lg-4">
         <img className="rounded-circle pet-image" src="./images/triste.jpg" alt="Imagem de capa do card" />
