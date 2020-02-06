@@ -62,7 +62,7 @@ class PetDetails extends Component {
   }
   
   email() {
-    if (this.state && this.loggedInUser)  {
+    if (this.state && this.props.user)  {
       let petEmail = this.state.owner.email;
       let userEmail = this.props.user.user.email
       this.service
@@ -83,8 +83,8 @@ class PetDetails extends Component {
   render() {
     console.log('this.state',this.state)
     return (
-      <div className="container h-100">
-        <h1 className="pt-5 col-12">Detalhes</h1>
+      <div className="container-details h-100">
+        {/* <h1 className="pt-5 col-12">Detalhes</h1> */}
         <div className="container d-flex flex-column flex-md-row align-items-center justify-content-around p-5">
           <div className="col-12 col-md-6">
             <img className="img-fluid img-thumbnail" src={this.state.imageUrl} />
@@ -121,10 +121,10 @@ class PetDetails extends Component {
             </div>
 
             </div>
-            <Link className="btn btn-secondary m-1" onClick={this.email}>
-              Enviar Email
+            <Link className="btn btn-outline-dark" onClick={this.email}>
+              Enviar email com seu contato
             </Link>
-            {this.state.message && <h2 className="">Email enviado com sucesso! Em breve você receberá uma resposta.</h2>}
+            {this.state.message && <h4 className="col-12 alert alert-primary" role="alert" >Email enviado com sucesso! Em breve você receberá uma resposta sobre o seu pet.</h4>}
           </div>
         </div>
 
