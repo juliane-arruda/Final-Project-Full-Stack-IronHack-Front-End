@@ -4,8 +4,10 @@ img{
 }
 
 .background-pet {
-	/* background-color: #ffffff; */
-	border-bottom-left-radius: 30px !important; 
-	border-bottom-right-radius: 30px !important;
+	background-color: #ffffff;
+	max-height: 80vh;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 30px !important; 
 }
 
