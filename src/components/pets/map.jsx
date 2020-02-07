@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { PetsMap } from "../map/PetsMap";
+import './map.css'
 
 // import AddPet from "./AddPet"; // <== !!!
 
@@ -25,7 +26,7 @@ class PetListMap extends Component {
 
   render() {
     return (
-      <div className="w-100 d-flex flex-column h-100">
+      <div className="map d-flex flex-column">
         <h1 className="py-3">Encontre o seu Pet</h1>
         <PetsMap
           loadingElement={<div style={{ height: '100%' }} />}
