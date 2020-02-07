@@ -1,0 +1,27 @@
+.PetList .image {
+  position: relative;
+  /* overflow: hidden; */
+}
+.PetList .image .details {
+  display: none;
+  background: rgb(225,225,225, 0.7);
+  width: calc(100% - 30px);
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  color: black;
+  padding-top: 1vw ;
+  border-bottom-left-radius: 30px !important; 
+  border-bottom-right-radius: 30px !important; 
+}
+
+.card-img-top {
+  height: 25vw;
+  object-fit: cover;
+  border-radius: 30px !important; 
+  /* max-width: 30vw; */
+}
+
+.PetList .image:hover .details {
+  display: block;
+}

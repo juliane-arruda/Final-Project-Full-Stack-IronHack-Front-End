@@ -37,48 +37,18 @@
   }
 }
 
-
-
-.card-img-top {
-    height: 25vw;
-    object-fit: cover;
-    border-radius: 30px !important; 
-    /* max-width: 30vw; */
+main {
+  min-height: calc(100% - 73px);
 }
 
 .search-img {
-    height: 30vw;
-    object-fit: cover;
+  height: 30vw;
+  object-fit: cover;
 }
 
 .container-details {
-background-color: rgb(225,225,225, 0.5);
-background-image: url(/images/backgroud-patas.png);
-  
-}
-
-
-
-.imagem {
-  position: relative;
-}
-.capa {
-  display: none;
-}
-
-.imagem:hover .capa {
-  display: block;
-}
-
-.capa {
-  background: rgb(225,225,225, 0.7);
+  background-color: rgb(225,225,225, 0.5);
+  background-image: url(/images/backgroud-patas.png);
   width: 100%;
-  height: 30%;
-  position: absolute;
-  bottom: 0;
-  color: black;
-  padding-top: 1vw ;
-  border-bottom-left-radius: 30px !important; 
-  border-bottom-right-radius: 30px !important; 
-
+  min-height: 100%;
 }
