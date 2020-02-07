@@ -37,17 +37,12 @@ class PetList extends Component {
        
     <Link to={`/pets/${pet._id}`} className="capa">
       <h2  className="">{pet.petName}</h2>
-          <p className="">{pet.role}</p>
+          <h5 className="">{pet.role}</h5>
     </Link>
       </div>
-
-
-
             );
           })}
-
         </div>
-
     </div>
     );
   }
