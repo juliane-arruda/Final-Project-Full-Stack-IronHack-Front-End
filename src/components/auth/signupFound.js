@@ -68,6 +68,7 @@ class SignupFound extends Component {
       .then(data => {
         this.service.search(data.aNewPet._id)
         .then(res => {
+          // console.log(data.aNewUser)
           this.props.getMatch(res)
           this.props.getUser(data.aNewUser);
           this.props.getNewPet(data.aNewPet)
