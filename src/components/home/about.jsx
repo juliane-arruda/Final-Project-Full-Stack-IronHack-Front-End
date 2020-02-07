@@ -9,10 +9,11 @@ const About = () => (
         <img className="img-fluid img-thumbnail" src="/images/family.jpg" alt="family" />
       </div>
       <div className="col-12 col-md-6 col-lg-4">
-        <h2>Sobre</h2>
-        <p> "Esse conteudo fica no meio da imagem azul"
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, laboriosam reiciendis rem fugiat molestias sit ut officia accusamus minima ipsa voluptatem enim facere. Ipsum totam ex veniam harum possimus fugiat.
-    </p>
+        {/* <h2>Sobre</h2> */}
+        <h4> Através do reconhecimento digital das características do animal,  a <strong>"I Cat Your Pet"</strong> faz um mapeamento de 
+          todos os animais perdidos e encontrados em sua região. <br/> Encontrar seu pet nunca foi tão fácil! <br/> Ajudar o pet que se perdeu é sempre muito gratificante.
+          
+    </h4>
       </div>
     </div>
   </div>
