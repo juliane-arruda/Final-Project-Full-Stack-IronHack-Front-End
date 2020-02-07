@@ -24,7 +24,7 @@ const Instructions = () => (
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptas quia neque animi consequatur esse aperiam repellat suscipit doloribus, adipisci quos mollitia molestias rem temporibus nihil commodi iusto exercitationem alias?
         </p>
         <div className="container">
-          <Link type="button" class="btn btn-outline-primary m-1" to="/mapa" style={{ textDecoration: "none" }}>
+          <Link type="button" class="btn btn-outline-primary m-1" to="/map" style={{ textDecoration: "none" }}>
             Mapa
           </Link>
         </div>
