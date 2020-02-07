@@ -64,10 +64,10 @@ class PetDetails extends Component {
       });
   }
 
-log() {
-  const { loggedInUser } = this.state
-  this.props.user && !this.state.loggedInUser && this.setState({loggedInUser: this.props.user})
-}
+  log() {
+    const { loggedInUser } = this.state
+    this.props.user && !this.state.loggedInUser && this.setState({ loggedInUser: this.props.user })
+  }
 
 
   email() {
@@ -76,12 +76,12 @@ log() {
       let userEmail = this.props.user.email
       this.service
 
-      .email(petEmail, userEmail)
-      .then(() => this.setState({message: true}))
-      .catch((err) => {
-        console.log(err)
-      });
-    } 
+        .email(petEmail, userEmail)
+        .then(() => this.setState({ message: true }))
+        .catch((err) => {
+          console.log(err)
+        });
+    }
 
   }
 
@@ -95,9 +95,9 @@ log() {
     return (
       <div className="container-details h-100">
         {/* <h1 className="pt-5 col-12">Detalhes</h1> */}
-        
+
         <div className="background-pet container d-flex flex-column flex-md-row align-items-center justify-content-around p-5">
-          
+
           <div className="col-12 col-md-6">
             <img className="img-fluid img-thumbnail" src={this.state.imageUrl} />
             <h4>{this.state.petName}</h4>
@@ -112,28 +112,25 @@ log() {
               position={this.state.petLocation.coordinates}
             />}
 
-            <div className="col-12">
+            <div className="col-12 d-flex justify-content-around m-2">
 
-             { this.state.owner &&
-              this.state.loggedInUser  &&
-                  this.props.user._id === this.state.owner._id && (
-            <>
-            <Link className="btn btn-danger m-1" onClick={this.deletePet}>
-              Apagar
-            </Link>
-            <Link className="btn btn-info m-1" to={`/pets/${this.props.match.params.id}/edit`}>
-              Editar
-            </Link>
-            </>
-                  )}
-            {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
-            <div>
-            <button onClick={this.backSearch} className
-            ="btn btn-secondary m-2"> Voltar </button>
-              
-            </div>
-
-
+              {this.state.owner &&
+                this.state.loggedInUser &&
+                this.props.user._id === this.state.owner._id && (
+                  <>
+                    <Link className="btn btn-danger m-1" onClick={this.deletePet}>
+                      Apagar
+                    </Link>
+                    <Link className="btn btn-info m-1" to={`/pets/${this.props.match.params.id}/edit`}>
+                      Editar
+                    </Link>
+                  </>
+                )}
+              {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
+              <div>
+                <button onClick={this.backSearch} className
+                  ="btn btn-secondary m-2"> Voltar </button>
+              </div>
             </div>
             <Link className="btn btn-outline-dark m-2" onClick={this.email}>
               Enviar email com seu contato

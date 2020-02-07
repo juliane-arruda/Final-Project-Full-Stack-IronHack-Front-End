@@ -70,10 +70,10 @@ class Login extends Component {
             Não tem uma conta?
             <div className="container mt-2">
               <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
-                  Perdi Meu Pet
+                  Perdido
               </Link>
               <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
-                  Encontrei Um Pet
+                  Encontrado
               </Link>
             </div>
           </p>
