@@ -1,4 +1,11 @@
 img{
-	max-width:100%;
-	height:auto;
+	max-width: 100%;
+	height: auto;
 }
+
+.background-pet {
+	/* background-color: #ffffff; */
+	border-bottom-left-radius: 30px !important; 
+	border-bottom-right-radius: 30px !important;
+}
+

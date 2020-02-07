@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './petList.css';
 
 // import AddPet from "./AddPet"; // <== !!!
 
@@ -25,25 +26,23 @@ class PetList extends Component {
 
   render() {
     return (
-      <div className="container-details">
-        <div className="row row-cols-1 row-cols-md-4 p-5 d-flex justify-content-center" >
-
+      <div className="PetList container-fluid container-details">
+        <div className="row p-5 d-flex align-items-start justify-content-center">
           {this.state.listOfPets && this.state.listOfPets.map(pet => {
             return (
 
-        <div className="imagem m-2" id={pet._id} key={pet._id}>
-       
-        <img src={pet.imageUrl} className="card-img-top"/>
-       
-    <Link to={`/pets/${pet._id}`} className="capa">
-      <h2  className="">{pet.petName}</h2>
-          <h5 className="">{pet.role}</h5>
-    </Link>
-      </div>
+          <div className="image mt-3 col-12 col-sm-6 col-lg-4" id={pet._id} key={pet._id}>
+            <img src={pet.imageUrl} className="card-img-top img-fluid"/>
+            <Link to={`/pets/${pet._id}`} className="details">
+              <h2  className="">{pet.petName}</h2>
+              <p className="">{pet.role}</p>
+            </Link>
+          </div>
             );
           })}
         </div>
-    </div>
+      </div>
+
     );
   }
 }
