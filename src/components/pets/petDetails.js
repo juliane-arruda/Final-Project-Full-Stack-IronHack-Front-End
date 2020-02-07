@@ -26,10 +26,12 @@ class PetDetails extends Component {
     this.deletePet = this.deletePet.bind(this);
     this.backSearch = this.backSearch.bind(this);
     this.email = this.email.bind(this);
+    this.log = this.log.bind(this);
     this.service = new AuthService();
   }
   componentDidMount() {
     this.getSinglePet()
+    this.log()
   }
   
   getSinglePet() {
@@ -61,19 +63,22 @@ class PetDetails extends Component {
     });
   }
   
+log() {
+  const { loggedInUser } = this.state
+  this.props.user && !this.state.loggedInUser && this.setState({loggedInUser: this.props.user})
+}
+
   email() {
     if (this.state && this.props.user)  {
       let petEmail = this.state.owner.email;
-      let userEmail = this.props.user.user.email
+      let userEmail = this.props.user.email
       this.service
       .email(petEmail, userEmail)
       .then(() => this.setState({message: true}))
       .catch((err) => {
         console.log(err)
       });
-    } else {
-      this.props.history.push("/login");
-    }
+    } 
   }
   
   backSearch() {
@@ -82,6 +87,7 @@ class PetDetails extends Component {
   
   render() {
     console.log('this.state',this.state)
+   
     return (
       <div className="container-details h-100">
         {/* <h1 className="pt-5 col-12">Detalhes</h1> */}
@@ -102,8 +108,8 @@ class PetDetails extends Component {
 
             <div className="col-12">
               { this.state.owner &&
-              this.props.user  &&
-                  this.props.user.user._id === this.state.owner._id && (
+              this.state.loggedInUser  &&
+                  this.props.user._id === this.state.owner._id && (
             <>
             <Link className="btn btn-danger m-1" onClick={this.deletePet}>
               Apagar
@@ -116,15 +122,15 @@ class PetDetails extends Component {
             {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
             <div>
             <button onClick={this.backSearch} className
-            ="btn btn-secondary m-1"> Voltar </button>
+            ="btn btn-secondary m-2"> Voltar </button>
               
             </div>
 
             </div>
-            <Link className="btn btn-outline-dark" onClick={this.email}>
+            <Link className="btn btn-outline-dark m-2" onClick={this.email}>
               Enviar email com seu contato
             </Link>
-            {this.state.message && <h4 className="col-12 alert alert-primary" role="alert" >Email enviado com sucesso! Em breve você receberá uma resposta sobre o seu pet.</h4>}
+            {this.state.message && <h5 className="alert alert-success m-3" role="alert" >Email enviado com sucesso! Em breve você receberá uma resposta sobre o seu pet.</h5>}
           </div>
         </div>
 
