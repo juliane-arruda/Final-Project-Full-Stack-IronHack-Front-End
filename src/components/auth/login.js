@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import './login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -39,11 +40,11 @@ class Login extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="pt-5 d-flex flex-column justify-content-center">
-        <div className="card-body">
+      <div className="Login pt-5 d-flex flex-column justify-content-center h-100" style={{backgroundImage: 'url(/images/cat-login.jpg)'}}>
+        <div className="login-form">
           <h3 className="card-title">Login</h3>
           <Form onSubmit={this.handleFormSubmit} className="d-flex flex-column align-items-center">
-            <Form.Group controlId="username" className="col-3">
+            <Form.Group controlId="username" className="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
               <Form.Label>Username</Form.Label>
               <Form.Control type="text"
                 name="username"
@@ -51,7 +52,7 @@ class Login extends Component {
                 onChange={this.handleChange} />
             </Form.Group>
 
-            <Form.Group controlId="password" className="col-3">
+            <Form.Group controlId="password" className="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password"
                 name="password"
@@ -63,11 +64,18 @@ class Login extends Component {
             <input type="button" class="btn btn-secondary btn-lg" type="submit" value="Login" />
           </Form>
           {this.state.message && <p>{this.state.message}</p>}
+          <p>
+            Não tem uma conta?
+            <div className="container mt-2">
+              <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
+                  Perdi Meu Pet
+              </Link>
+              <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
+                  Encontrei Um Pet
+              </Link>
+            </div>
+          </p>
         </div>
-        <p>
-          Don't have account?
-              <Link to={"/signup"}> Signup</Link>
-        </p>
       </div>
     );
   }
