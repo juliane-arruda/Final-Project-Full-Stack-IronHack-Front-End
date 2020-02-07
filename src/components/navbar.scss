@@ -1,8 +1,12 @@
 .Navbar {
   height: 73px;
 
-  a:hover {
-    text-decoration: none;
+  a {
+    font-family: 'Boogaloo', cursive;
+    
+    &:hover {
+      text-decoration: none;
+    }
   }
   
   .navbar {
