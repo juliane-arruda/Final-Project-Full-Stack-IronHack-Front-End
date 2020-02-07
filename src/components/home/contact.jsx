@@ -3,17 +3,17 @@ import './contact.css';
 import 'bootstrap-social';
 
 const Contact = () => (
-  <div id="contact" className="container-fluid background-contact bg-secondary">
+  <div id="contact" className="container-fluid">
     <div className="container d-inline-flex flex-column flex-md-row align-items-center justify-content-around row mt-5">
       {/* <img src="/images/fundo.png" alt="background"/> */}
       <div className="col-12 col-md-6 col-lg-4">
-        <h4 className="text-white">CONTATO</h4>
-        <p className="text-white">Telefone: (11) 1234-5678</p>
-        <p className="text-white">E-mail: icatyoupet@gmail.com</p>
-        <p className="text-white">Alameda Jaú, 1301 - Jardim Paulista,<br /> São Paulo - SP, 01420-001</p>
+        <h4>CONTATO</h4>
+        <p>Telefone: (11) 1234-5678</p>
+        <p>E-mail: icatyoupet@gmail.com</p>
+        <p>Alameda Jaú, 1301 - Jardim Paulista,<br /> São Paulo - SP, 01420-001</p>
       </div>
       <div className="my-2 col-12 col-md-6 col-lg-4">
-        <h4 className="text-white">SIGA-NOS</h4>
+        <h4>SIGA-NOS</h4>
         <img className="img-fluid btn-social-icon btn-facebook p-1 m-1" src="/images/icons/facebook.png" alt="facebook" />
         <img className="img-fluid btn-social-icon btn-twitter p-1 m-1" src="/images/icons/twitter.png" alt="twitter" />
         <img className="img-fluid btn-social-icon btn-pinterest p-1 m-1" src="/images/icons/plus.png" alt="google" />

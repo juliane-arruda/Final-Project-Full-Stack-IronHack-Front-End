@@ -4,10 +4,7 @@
   object-fit: cover;
 }
 
-.test-1 {
-  border: blue solid 1px;
-}
-
-.test-2 {
-  border: purple solid 1px;
+#howItWorks {
+  background-image: url("/images/landing-background-2.jpg");
+  /* background: rgb(225,225,225, 0.7); */
 }

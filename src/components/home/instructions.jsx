@@ -15,10 +15,18 @@ const Instructions = () => (
         <div className="container">
           <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
             Perdi Meu Pet
-        </Link>
+          </Link>
           <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
             Encontrei Um Pet
-        </Link>
+          </Link>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptas quia neque animi consequatur esse aperiam repellat suscipit doloribus, adipisci quos mollitia molestias rem temporibus nihil commodi iusto exercitationem alias?
+        </p>
+        <div className="container">
+          <Link type="button" class="btn btn-outline-primary m-1" to="/mapa" style={{ textDecoration: "none" }}>
+            Mapa
+          </Link>
         </div>
       </div>
     </div>
