@@ -40,7 +40,7 @@ class SignupFound extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    this.setState({message: '', loading: true,});
+    this.setState({ message: '', loading: true, });
 
     const {
       username,
@@ -52,7 +52,7 @@ class SignupFound extends Component {
       petDate,
     } = this.state.model;
 
-    const {imageUrl} = this.state;
+    const { imageUrl } = this.state;
 
     // console.log(this.state.model);
     this.service
@@ -67,22 +67,22 @@ class SignupFound extends Component {
         petDate)
       .then(data => {
         this.service.search(data.aNewPet._id)
-        .then(res => {
-          // console.log(data.aNewUser)
-          this.props.getMatch(res)
-          this.props.getUser(data.aNewUser);
-          this.props.getNewPet(data.aNewPet)
-          this.props.history.push("/pet/search")
+          .then(res => {
+            // console.log(data.aNewUser)
+            this.props.getMatch(res)
+            this.props.getUser(data.aNewUser);
+            this.props.getNewPet(data.aNewPet)
+            this.props.history.push("/pet/search")
 
-        })
+          })
       })
       .catch(error => {
         console.log(error.response)
         this.setState({
           message: error.response.data.message
         });
-      }).finally(()=>{
-        this.setState({loading: false});
+      }).finally(() => {
+        this.setState({ loading: false });
       });
   }
 
@@ -124,7 +124,7 @@ class SignupFound extends Component {
           loading={this.state.loading}
           onChange={this.handleChange} />
         <p className="p-3">
-          Already have account?
+          Já tem uma conta?
           <Link to={"/"}> Login</Link>
         </p>
       </div>

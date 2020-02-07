@@ -67,14 +67,14 @@ class SignupLost extends Component {
         imageUrl,
         petLocation,
         petDate)
-        .then(data => {
-          this.service.search(data.aNewPet._id)
+      .then(data => {
+        this.service.search(data.aNewPet._id)
           .then(res => {
             this.props.getMatch(res)
             this.props.getUser(data.aNewUser);
             this.props.getNewPet(data.aNewPet)
             this.props.history.push("/pet/search")
-  
+
           })
       })
       .catch(error => {
@@ -125,7 +125,7 @@ class SignupLost extends Component {
           loading={this.state.loading}
           onChange={this.handleChange} />
         <p className="p-3">
-          Already have account?
+          Já tem uma conta?
           <Link to={"/"}> Login</Link>
         </p>
       </div>
