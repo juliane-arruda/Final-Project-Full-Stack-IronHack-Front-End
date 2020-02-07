@@ -24,7 +24,7 @@ const Instructions = () => (
           A partir desse momento, nosso sistema fará uma leitura da foto e retornará o resultado com todos os animais semelhantes ao seu.
         </p>
         <div className="container">
-          
+
         </div>
       </div>
     </div>
