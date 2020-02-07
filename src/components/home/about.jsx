@@ -1,7 +1,7 @@
 import React from 'react';
 
 const About = () => (
-  <div className="container-fluid p-5">
+  <div id="about" className="container-fluid p-5">
     <div className="row d-flex align-items-center justify-content-around">
     <div className="col-12 col-md-6 col-lg-4">
       <img className="img-fluid img-thumbnail" src="/images/family.jpg" alt="family" />
