@@ -1,5 +1,7 @@
 import React from 'react';
 import './howItWorks.css'
+import { Link } from "react-router-dom";
+
 
 const HowItWorks = () => (
   <div id="howItWorks" className="container-fluid p-5 test-1">
@@ -8,9 +10,10 @@ const HowItWorks = () => (
       <div className="test-2 col-12 col-md-6 col-lg-4">
         <img className="rounded-circle pet-image" src="./images/triste.jpg" alt="Imagem de capa do card" />
         <div className="card-body">
-          <h5 className="card-title">Perdi</h5>
+          <h5 className="card-title">Perdido</h5>
           <p className="card-text">
-            Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.
+          Seu animal de estimação está perdido?<br></br>
+            Nós te ajudamos a encontrar.
             </p>
         </div>
       </div>
@@ -19,9 +22,10 @@ const HowItWorks = () => (
         {/* style={{ width: '18rem' }} */}
         <img className="rounded-circle pet-image" src="./images/cat-encontrado.jpg" alt="Imagem de capa do card" />
         <div className="card-body">
-          <h5 className="card-title">Encontrei</h5>
+          <h5 className="card-title">Encontrado</h5>
           <p className="card-text">
-            Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.
+          Você encontrou um animal de <br/>estimação  desaparecido? <br/>
+            Ajude-o a voltar para sua família.
           </p>
         </div>
       </div>
@@ -31,8 +35,10 @@ const HowItWorks = () => (
         <div className="card-body">
           <h5 className="card-title">Família</h5>
           <p className="card-text">
-            Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.
+          Uma família completa,<br/>
+          um verdadeiro lar.
           </p>
+         
         </div>
       </div>
     </div>

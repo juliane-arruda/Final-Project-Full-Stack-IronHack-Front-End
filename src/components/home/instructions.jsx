@@ -10,23 +10,21 @@ const Instructions = () => (
       <h2 className="mb-5">Como Usar Nossa Ferramenta</h2>
       <div className="test-1 w-50">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptas quia neque animi consequatur esse aperiam repellat suscipit doloribus, adipisci quos mollitia molestias rem temporibus nihil commodi iusto exercitationem alias?
+          Faça o cadastro do seu pet e carregue uma foto do seu animal de estimação. 
         </p>
         <div className="container">
-          <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
-            Perdi Meu Pet
-          </Link>
           <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
-            Encontrei Um Pet
+            Encontrado
+          </Link>
+          <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
+            Perdido
           </Link>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure voluptas quia neque animi consequatur esse aperiam repellat suscipit doloribus, adipisci quos mollitia molestias rem temporibus nihil commodi iusto exercitationem alias?
+        <p className="m-2">
+          A partir desse momento, nosso sistema fará uma leitura da foto e retornará o resultado com todos os animais semelhantes ao seu.
         </p>
         <div className="container">
-          <Link type="button" class="btn btn-outline-primary m-1" to="/mapa" style={{ textDecoration: "none" }}>
-            Mapa
-          </Link>
+          
         </div>
       </div>
     </div>
