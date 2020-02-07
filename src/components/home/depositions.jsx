@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Depositions = () => (
-  <div className="container p-5">
+  <div id="depositions" className="container p-5">
     <h2 className="pb-5">Depoimentos</h2>
     <div className="row justify-content-center">
       <div className="col-12 col-md-6 col-lg-4 mt-2">
