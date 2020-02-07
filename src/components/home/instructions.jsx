@@ -6,7 +6,7 @@ import image from './background-cat-dog.jpg';
 
 const Instructions = () => (
   <Parallax bgImage={image} strength={400} className="Intro" bgClassName="d-none d-lg-inline">
-    <div className="test-0  container d-flex flex-column align-items-center justify-content-center" style={{ height: 600 }}>
+    <div id="instructions" className="test-0  container d-flex flex-column align-items-center justify-content-center" style={{ height: 600 }}>
       <h2 className="mb-5">Como Usar Nossa Ferramenta</h2>
       <div className="test-1 w-50">
         <p>

@@ -2,7 +2,7 @@ import React from 'react';
 import './howItWorks.css'
 
 const HowItWorks = () => (
-  <div className="container-fluid p-5 test-1">
+  <div id="howItWorks" className="container-fluid p-5 test-1">
     <h2 className="pb-5">Como Funciona</h2>
     <div className="row justify-content-center">
       <div className="test-2 col-12 col-md-6 col-lg-4">

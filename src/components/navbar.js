@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import AuthService from "./auth/auth-service";
 import BtNavbar from 'react-bootstrap/Navbar';
+import { HashLink } from 'react-router-hash-link';
 import './navbar.scss';
+
 
 class Navbar extends Component {
   constructor(props) {
@@ -81,11 +83,11 @@ class Navbar extends Component {
               )}
               {!userInSession && (
                 <>
-                  <NavLink to="/#about" className="p-2 text-dark">Sobre</NavLink>
-                  <NavLink to="/#howItWorks" className="p-2 text-dark">Como funciona?</NavLink>
-                  <NavLink to="/#instructions" className="p-2 text-dark">Instruções</NavLink>
-                  <NavLink to="/#depositions" className="p-2 text-dark">Depoimentos</NavLink>
-                  <NavLink to="/#contact" className="p-2 text-dark">Contato</NavLink>
+                  <HashLink to="#about" className="p-2 text-dark">Sobre</HashLink>
+                  <HashLink to="/#howItWorks" className="p-2 text-dark">Como funciona?</HashLink>
+                  <HashLink to="/#instructions" className="p-2 text-dark">Instruções</HashLink>
+                  <HashLink to="/#depositions" className="p-2 text-dark">Depoimentos</HashLink>
+                  <HashLink to="/#contact" className="p-2 text-dark">Contato</HashLink>
                   {/* <NavLink className="p-2 text-dark" to="/signup-found">
                     Encontrei um pet
                   </NavLink>

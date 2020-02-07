@@ -3,7 +3,7 @@ import './contact.css';
 import 'bootstrap-social';
 
 const Contact = () => (
-  <div className="container-fluid background-contact bg-secondary">
+  <div id="contact" className="container-fluid background-contact bg-secondary">
     <div className="container d-inline-flex flex-column flex-md-row align-items-center justify-content-around row mt-5">
       {/* <img src="/images/fundo.png" alt="background"/> */}
       <div className="col-12 col-md-6 col-lg-4">
