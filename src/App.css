@@ -46,10 +46,6 @@
     /* max-width: 30vw; */
 }
 
-.search-img {
-    height: 30vw;
-    object-fit: cover;
-}
 
 .container-details {
 background-color: rgb(225,225,225, 0.5);
