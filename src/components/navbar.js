@@ -70,6 +70,9 @@ class Navbar extends Component {
                   <NavLink className="p-2 text-dark" activeStyle={{ color: "blue" }} to="/pets" style={{ textDecoration: "none" }}>
                     Pets
                   </NavLink>
+                  <NavLink className="p-2 text-dark" activeStyle={{ color: "blue" }} to="/map" style={{ textDecoration: "none" }}>
+                    Mapa
+                  </NavLink>
                   {/* <NavLink className="p-2 text-dark" to="/signup-found" style={{ textDecoration: "none" }}>
                     Encontrei um pet
                   </NavLink> */}
@@ -95,9 +98,9 @@ class Navbar extends Component {
                   <HashLink to="/#contact" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
                     Contato
                     </HashLink>
-                  <NavLink className="p-2 text-dark" activeStyle={{ color: "blue" }} to="/map" style={{ textDecoration: "none" }}>
+                  {/* <NavLink className="p-2 text-dark" activeStyle={{ color: "blue" }} to="/map" style={{ textDecoration: "none" }}>
                     Mapa
-                  </NavLink>
+                  </NavLink> */}
                   {/* <NavLink className="p-2 text-dark" to="/signup-found">
                     Encontrei um pet
                   </NavLink>

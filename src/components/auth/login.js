@@ -40,8 +40,10 @@ class Login extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="Login pt-5 d-flex flex-column justify-content-center h-100" style={{backgroundImage: 'url(/images/cat-login.jpg)'}}>
-        <div className="login-form">
+      // <di className="Login pt-5 d-flex flex-column justify-content-center h-100" style={{backgroundImage: 'url(/images/cat-login.jpg)'}}>
+        //  backgroundImage: 'url(/images/cat-login.jpg): 'url(/images/cat-login.jpg)="login-form">
+       <div className="Login pt-5 d-flex flex-column justify-content-center">
+         <div>
           <h3 className="card-title">Login</h3>
           <Form onSubmit={this.handleFormSubmit} className="d-flex flex-column align-items-center">
             <Form.Group controlId="username" className="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
