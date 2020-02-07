@@ -56,7 +56,7 @@ class SignupLost extends Component {
 
     const { imageUrl } = this.state;
 
-    console.log(this.state.model);
+    // console.log(this.state.model);
     this.service
       .signup(username,
         password,

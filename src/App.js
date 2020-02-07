@@ -49,7 +49,7 @@ class App extends Component {
 
   getTheUser(userObj) {
     this.setState({
-      loggedInUser: userObj
+      loggedInUser: {...userObj}
     });
   }
 

@@ -30,6 +30,7 @@ class PetList extends Component {
         <div className="row p-5 d-flex align-items-start justify-content-center">
           {this.state.listOfPets && this.state.listOfPets.map(pet => {
             return (
+
           <div className="image mt-3 col-12 col-sm-6 col-lg-4" id={pet._id} key={pet._id}>
             <img src={pet.imageUrl} className="card-img-top img-fluid"/>
             <Link to={`/pets/${pet._id}`} className="details">
@@ -41,6 +42,7 @@ class PetList extends Component {
           })}
         </div>
       </div>
+
     );
   }
 }
