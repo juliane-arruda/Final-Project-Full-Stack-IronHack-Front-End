@@ -1,0 +1,9 @@
+.address-map-container {
+  position: relative;
+}
+
+.current-position-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

@@ -63,11 +63,12 @@ const PetsMapAnnotated = withGoogleMap(PetsMapBase);
 export const PetsMap = ({
   loadingElement,
   mapStore,
+  containerElement = MapContainer,
   ...props
 }) => {
   return (
     <LoadGoogleMapsJs loadingElement={loadingElement}>
-      <PetsMapAnnotated {...props} containerElement={MapContainer()} />
+      <PetsMapAnnotated {...props} containerElement={containerElement()} />
     </LoadGoogleMapsJs>
   );
 };

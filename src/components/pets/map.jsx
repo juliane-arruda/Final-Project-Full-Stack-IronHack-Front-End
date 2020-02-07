@@ -25,15 +25,16 @@ class PetListMap extends Component {
 
   render() {
     return (
-      <div className="col-12">
-        <h1 className="pt-5 col-12">Encontre o seu Pet</h1>
-      <PetsMap
-        loadingElement={<div style={{ height: '100%' }} />}
-        mapElement={<div style={{ height: '600px' }} />}
-        defaultZoom={12}
-        defaultCenter={{ lat: -23.5617714, lng: -46.6601914 }}
-        pets={this.state.listOfPets}
-      />
+      <div className="w-100 d-flex flex-column h-100">
+        <h1 className="py-3">Encontre o seu Pet</h1>
+        <PetsMap
+          loadingElement={<div style={{ height: '100%' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+          defaultZoom={12}
+          defaultCenter={{ lat: -23.5617714, lng: -46.6601914 }}
+          pets={this.state.listOfPets}
+          containerElement={() => <div className="w-100 flex-fill"></div>}
+        />
       </div>
     );
   }
