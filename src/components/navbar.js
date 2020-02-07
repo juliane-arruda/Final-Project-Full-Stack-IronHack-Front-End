@@ -83,6 +83,9 @@ class Navbar extends Component {
               )}
               {!userInSession && (
                 <>
+                <HashLink to="/#intro" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                    Home
+                    </HashLink>
                   <HashLink to="/#about" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
                     Sobre
                     </HashLink>
