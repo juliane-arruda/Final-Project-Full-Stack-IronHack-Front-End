@@ -2,3 +2,10 @@
   background-color: #e1e1e1;
   /* color: mediumblue; */
 }
+
+.home-map {
+  max-width: 350px;
+  max-height: 250px;
+  width: 100%;
+  height: 100%;
+}
