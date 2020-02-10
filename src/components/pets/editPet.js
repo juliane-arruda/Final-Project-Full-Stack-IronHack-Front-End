@@ -108,7 +108,7 @@ class EditPet extends Component {
                 name="petLocation"
                 value={this.state.petLocation}
                 onChange={e => this.handleChange(e)} /> */}
-          <button class="btn btn-secondary btn-lg" type="submit">Editar Pet</button>
+          <button className="btn btn-secondary btn-lg" type="submit">Editar Pet</button>
         </Form>
       </div>
     )

@@ -63,16 +63,16 @@ class Login extends Component {
               />
             </Form.Group>
 
-            <input type="button" class="btn btn-secondary btn-lg" type="submit" value="Login" />
+            <input type="button" className="btn btn-secondary btn-lg" type="submit" value="Login" />
           </Form>
           {this.state.message && <p>{this.state.message}</p>}
           <p>
             Não tem uma conta?
             <div className="container mt-2">
-              <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
+              <Link type="button" className="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
                   Perdido
               </Link>
-              <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
+              <Link type="button" className="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
                   Encontrado
               </Link>
             </div>
