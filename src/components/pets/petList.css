@@ -15,11 +15,15 @@
   border-bottom-right-radius: 30px !important; 
 }
 
-.card-img-top {
-  height: 25vw;
-  object-fit: cover;
-  border-radius: 30px !important; 
-  /* max-width: 30vw; */
+.PetList .image .card {
+  border-radius: 30px !important;
+  overflow: hidden;
+}
+
+.PetList .image .card img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .PetList .image:hover .details {
