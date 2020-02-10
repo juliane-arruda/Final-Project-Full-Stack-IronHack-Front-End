@@ -93,11 +93,8 @@ class PetDetails extends Component {
     console.log('this.state', this.state)
 
     return (
-      <div className="container-details h-100">
-        {/* <h1 className="pt-5 col-12">Detalhes</h1> */}
-
+      <div className="container-details h-100 py-3">
         <div className="background-pet container d-flex flex-column flex-md-row align-items-center justify-content-around p-5">
-
           <div className="col-12 col-md-6">
             <img className="img-fluid img-thumbnail" src={this.state.imageUrl} />
             <h4>{this.state.petName}</h4>
@@ -111,9 +108,7 @@ class PetDetails extends Component {
               height={600}
               position={this.state.petLocation.coordinates}
             />}
-
             <div className="col-12 d-flex justify-content-around m-2">
-
               {this.state.owner &&
                 this.state.loggedInUser &&
                 this.props.user._id === this.state.owner._id && (
@@ -126,10 +121,10 @@ class PetDetails extends Component {
                     </Link>
                   </>
                 )}
-              {/* {this.props.loggedInUser && this.props.loggedInUser._id === pet.owner && ()} */}
               <div>
-                <button onClick={this.backSearch} className
-                  ="btn btn-secondary m-2"> Voltar </button>
+                <button onClick={this.backSearch} className="btn btn-secondary m-2">
+                  Voltar
+                </button>
               </div>
             </div>
             <Link className="btn btn-outline-dark m-2" onClick={this.email}>
@@ -138,7 +133,6 @@ class PetDetails extends Component {
             {this.state.message && <h5 className="alert alert-success m-3" role="alert" >Email enviado com sucesso! Em breve você receberá uma resposta sobre o seu pet.</h5>}
           </div>
         </div>
-
       </div>
     )
   }

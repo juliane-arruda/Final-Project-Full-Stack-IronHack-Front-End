@@ -5,9 +5,9 @@ img{
 
 .background-pet {
 	background-color: #ffffff;
-	max-height: 80vh;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	min-height: 80vh;
+	/* margin-top: 20px; */
+	/* margin-bottom: 20px; */
 	border-radius: 30px !important; 
 }
 
