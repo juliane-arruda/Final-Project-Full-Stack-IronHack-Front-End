@@ -13,10 +13,10 @@ const Instructions = () => (
           Faça o cadastro do seu pet e carregue uma foto do seu animal de estimação. 
         </p>
         <div className="container">
-          <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
+          <Link type="button" className="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
             Encontrado
           </Link>
-          <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
+          <Link type="button" className="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
             Perdido
           </Link>
         </div>

@@ -12,10 +12,10 @@ const Intro = () => (
         <h2>A mais alta tecnologia de reconhecimento de imagem  
         fazendo os animais de estimação voltarem para suas casas.</h2>
         <div className="container mt-2">
-          <Link type="button" class="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
+          <Link type="button" className="btn btn-outline-danger m-1" to="/signup-lost" style={{ textDecoration: "none" }}>
               Perdido
           </Link>
-          <Link type="button" class="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
+          <Link type="button" className="btn btn-outline-success m-1" to="/signup-found" style={{ textDecoration: "none" }}>
               Encontrado
           </Link>
         </div>
