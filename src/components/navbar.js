@@ -9,13 +9,13 @@ import './navbar.scss';
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.service = new AuthService();
     this.state = {
       onTop: window.scrollY < 50,
       isMenuOpen: false,
     };
     this.onScroll = this.onScroll.bind(this);
     this.onToggle = this.onToggle.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   componentDidMount() {
@@ -33,13 +33,8 @@ class Navbar extends Component {
   }
 
   logoutUser() {
-    this.service
-      .logout()
-      .then(() => {
-        this.setState({ loggedInUser: null }, () => console.log(this.state.loggedInUser));
-        this.props.getUser(null);
-      })
-      .catch(error => console.log(error));
+    this.props
+      .logout();
   }
 
   onToggle(expanded) {
@@ -49,17 +44,15 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.state.loggedInUser);
     const { isHome, userInSession } = this.props;
     const { onTop, isMenuOpen } = this.state;
-    console.log({ isMenuOpen })
 
     return (
       <div className={`Navbar ${isHome ? 'home' : ''} ${onTop ? 'top' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
         <BtNavbar onToggle={this.onToggle} fixed="top" expand="lg" className="d-flex flex-row p-3 px-lg-4 mb-3 border-bottom shadow-sm">
           <NavLink className="d-flex align-items-center" to="/">
             <img src="/images/logo.png" alt="Cat and Dog logo" className="logo mr-3" />
-            <h5 className="my-0 mr-lg-auto font-weight-normal">I Cat Your Pets</h5>
+            <h5 className="my-0 mr-lg-auto font-weight-normal">I Cat Your Pet</h5>
           </NavLink>
 
           <BtNavbar.Toggle aria-controls="basic-navbar-nav" />
@@ -83,25 +76,25 @@ class Navbar extends Component {
               )}
               {!userInSession && (
                 <>
-                <HashLink to="/#intro" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  <NavLink to="/#intro" className="p-2 text-dark"style={{ textDecoration: "none" }}>
                     Home
-                    </HashLink>
-                  <HashLink to="/#about" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  </NavLink>
+                  <HashLink to="/#about" className="p-2 text-dark" style={{ textDecoration: "none" }}>
                     Sobre
-                    </HashLink>
-                  <HashLink to="/#howItWorks" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  </HashLink>
+                  <HashLink to="/#howItWorks" className="p-2 text-dark" style={{ textDecoration: "none" }}>
                     Como funciona
-                    </HashLink>
-                  <HashLink to="/#instructions" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  </HashLink>
+                  <HashLink to="/#instructions" className="p-2 text-dark" style={{ textDecoration: "none" }}>
                     Instruções
-                    </HashLink>
-                  <HashLink to="/#depositions" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  </HashLink>
+                  <HashLink to="/#depositions" className="p-2 text-dark" style={{ textDecoration: "none" }}>
                     Depoimentos
-                    </HashLink>
-                  <HashLink to="/#contact" className="p-2 text-dark" activeStyle={{ color: "blue" }} style={{ textDecoration: "none" }}>
+                  </HashLink>
+                  <HashLink to="/#contact" className="p-2 text-dark" style={{ textDecoration: "none" }}>
                     Contato
-                    </HashLink>
-                  {/* <NavLink className="p-2 text-dark" activeStyle={{ color: "blue" }} to="/map" style={{ textDecoration: "none" }}>
+                  </HashLink>
+                  {/* <NavLink className="p-2 text-dark" to="/map" style={{ textDecoration: "none" }}>
                     Mapa
                   </NavLink> */}
                   {/* <NavLink className="p-2 text-dark" to="/signup-found">
@@ -119,7 +112,7 @@ class Navbar extends Component {
               </NavLink>
             )}
             {userInSession && (
-              <NavLink className="btn btn-outline-danger" onClick={() => this.logoutUser()} to="/" exact>
+              <NavLink className="btn btn-outline-danger" onClick={this.logoutUser} to="/" exact>
                 Logout
               </NavLink>
             )}

@@ -28,6 +28,7 @@ class App extends Component {
     this.getTheUser = this.getTheUser.bind(this);
     this.getMatch = this.getMatch.bind(this);
     this.getNewPet = this.getNewPet.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   fetchUser() {
@@ -45,6 +46,14 @@ class App extends Component {
           });
         });
     }
+  }
+
+  logout() {
+    this.service.logout().then(()=>{
+      this.setState({
+        loggedInUser: null
+      });
+    })
   }
 
   getTheUser(userObj) {
@@ -73,8 +82,8 @@ class App extends Component {
       <div className="App d-flex conteiner-fluid flex-column h-100">
         <main className="flex-shrink-0">
 
-          <Route path="/" render={({ match }) =>
-            <Navbar isHome={match.isExact} userInSession={this.state.loggedInUser} getUser={this.getTheUser} />} />
+          <Route path="/" render={({ match }) => 
+            <Navbar isHome={match.isExact} userInSession={this.state.loggedInUser} logout={this.logout} getUser={this.getTheUser} />} />
 
           <Switch>
 
