@@ -106,7 +106,7 @@ class Forms extends Component {
             <Form.Control
               type="file"
               onChange={this.handleFileUpload} />
-          </div>;
+          </div>
         </Form.Group>
 
         <Form.Group controlId="petDescription" className="col-12">
@@ -137,7 +137,7 @@ class Forms extends Component {
             type="submit float-right">
             {this.props.loading ? 'Salvando' : 'Signup'}
           </Button> 
-          : 
+          :
           <Button
             type="submit float-right"
             disabled>
